@@ -4,6 +4,8 @@ import Cards from "./Cards/Cards";
 import styles from "./Main&&Cards.module.css";
 import MainNews from "./news/MainNews";
 import SoonContainer from "./soon/SoonContainer";
+import { Route, Routes } from "react-router-dom";
+import Seans from '../main && cards/seans/Seans'
 
 const Main = () => {
   return (
@@ -14,6 +16,10 @@ const Main = () => {
         <MainNews />
         <SoonContainer />
       </div>
+      <Routes>
+        <Route path="/seances" element={<Seans />}/>
+
+      </Routes>
     </>
   );
 };
