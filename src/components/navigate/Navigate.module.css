@@ -1,0 +1,69 @@
+.navigate {
+  background-color: white;
+  width: 100%;
+}
+.navigateWrap {
+  display: flex;
+  width: 310px;
+  justify-content: space-between;
+  margin-left: 50px;
+  padding: 12px 0;
+}
+.contacts,
+.news,
+.poster,
+.sessions {
+  cursor: pointer;
+  position: relative;
+  color: black;
+}
+a {
+  text-decoration: none;
+}
+.contacts:after,
+.news:after,
+.poster:after,
+.sessions:after {
+  top: 29px;
+  display: block;
+  content: "";
+  background-color: #f20361;
+  height: 3px;
+  width: 0%;
+  left: 50%;
+  position: absolute;
+  -webkit-transition: width 0.3s ease-in-out;
+  -moz--transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.news:hover:after,
+.news:focus:after {
+  width: 130%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+}
+.contacts:hover:after,
+.contacts:focus:after {
+  width: 130%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+}
+.poster:hover:after,
+.poster:focus:after {
+  width: 130%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+}
+.sessions:hover:after,
+.sessions:focus:after {
+  width: 130%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+}
+.navigateFromDates {
+  border-bottom: 1px solid rgb(199, 199, 199);
+  border-top: 1px solid rgb(199, 199, 199);
+  background-color: rgb(226, 226, 226);
+  padding: 12px 0;
+}
+.navigateFromDatesWrap {
+  display: flex;
+  width: 130px;
+  margin-left: 45px;
+  justify-content: space-between;
+}

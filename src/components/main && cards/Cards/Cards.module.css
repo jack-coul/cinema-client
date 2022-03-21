@@ -1,0 +1,73 @@
+.cards {
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 265px;
+  height: 542.5px;
+  cursor: pointer;
+  margin: 0 10px 0 10px;
+}
+.backroundImgWrap {
+  height: 384px;
+  width: 100%;
+  position: relative;
+}
+.cardImg {
+  height: 384px;
+  width: 100%;
+  cursor: pointer;
+  background-image: url("https://s2ru1.kinoplan24.ru/563/5728a01246cd5f/11011.jpg?mode=fit&width=512&height=512");
+}
+
+.year {
+  color: aliceblue;
+  background-color: blue;
+  width: 35px;
+  text-align: center;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  height: 25px;
+}
+.filmTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 10px 0 5px 0;
+}
+.filmTitle:hover {
+  transition: 1s;
+  color: #f20361;
+}
+.genresWrap {
+  display: flex;
+}
+.genres {
+  margin-right: 5px;
+  color: rgb(88, 88, 88);
+  background-color: rgb(238, 238, 238);
+  padding: 2px 5px;
+  border-radius: 5px;
+}
+.genres:hover {
+  transition: 1s;
+  background-color: #f20361;
+  color: white;
+}
+.seanses {
+  background-color: #f20361;
+  color: white;
+
+  padding: 7px 3px;
+  margin-top: 20px;
+  width: 160px;
+  border-radius: 5px;
+  text-align: center;
+}
+.seanses:hover {
+  background-color: #ff3d8b;
+}

@@ -1,0 +1,28 @@
+.backroundImage {
+    width: 165px;
+    height: 237px;
+    background-image: url('https://s2ru1.kinoplan24.ru/531/4e7b2102ece53a/16564.jpg?mode=fit&width=256&height=256');
+}
+.soonCardWrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+.soonCard {
+    margin: 0 15px 20px 10px;
+}
+.soonCardDate {
+    color: rgb(161, 161, 161);
+    margin: 10px 0 5px 0;
+}
+.soonCardTitle h3 {
+    margin: 0;
+    padding: 0;
+}
+.soonCardTitle h3:hover {
+ transition: 1s;
+    color: #f20361;
+    cursor: pointer;
+}
+.soonTitle h1 {
+    margin: 10px 10px 20px 10px;
+}
