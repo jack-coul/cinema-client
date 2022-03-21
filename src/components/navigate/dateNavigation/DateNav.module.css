@@ -1,0 +1,16 @@
+.today,
+.tomorrow {
+  background-color: rgb(255, 255, 255);
+  padding: 5px 10px;
+  text-align: center;
+  border: 1px solid rgb(185, 185, 185);
+  border-radius: 20px;
+  font-size: 16px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.today:hover,
+.tomorrow:hover {
+  transition: 1s;
+  border: 1px solid #f20361;
+}

@@ -1,0 +1,13 @@
+.footer {
+    color: aliceblue;
+    background-color: #131e7f;
+    width: 1240px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+}
+.info span {
+    color: #f20361;
+}
