@@ -7,12 +7,12 @@ import SoonContainer from "./soon/SoonContainer";
 import { Route, Routes } from "react-router-dom";
 import Seans from "../main && cards/seans/Seans";
 import NewsPage from "./news/NewsPage";
+import ContactsM from "./contactsM/ContactsM";
 
 const Main = () => {
   return (
     <>
-      <Navigate/>
-
+      <Navigate />
       <Routes>
         <Route
           path="/"
@@ -36,6 +36,7 @@ const Main = () => {
             </>
           }
         />
+        <Route path="/contacts" element={<ContactsM />} />
       </Routes>
     </>
   );
