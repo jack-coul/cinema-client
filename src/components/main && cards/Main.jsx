@@ -7,6 +7,8 @@ import SoonContainer from "./soon/SoonContainer";
 import { Route, Routes } from "react-router-dom";
 import Seans from "../main && cards/seans/Seans";
 import NewsPage from "./news/NewsPage";
+import SingIn from "../navigate/avthorization/SingIn";
+import SingUp from "../navigate/avthorization/SingUp";
 import ContactsM from "./contactsM/ContactsM";
 
 const Main = () => {
@@ -36,7 +38,11 @@ const Main = () => {
             </>
           }
         />
+        <Route path="/signin" element={<SingIn/>}/>
+        <Route path="/signup" element={<SingUp/>}/>
+
         <Route path="/contacts" element={<ContactsM />} />
+
       </Routes>
     </>
   );
