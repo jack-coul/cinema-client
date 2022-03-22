@@ -13,9 +13,7 @@ const SingIn = () => {
   const handleLogin = (login,password)=>{
     dispatch(loginUser(login,password))
   }
-  const handleLogin = (login, password)=>{
-    dispatch(loginUser(login,password))
-  }
+
   return (
     <div className={styles.singIn}>
       <input placeholder="Введите email.." type="text"  value={login} onChange = {(e)=> setLogin(e.target.value)}/>
