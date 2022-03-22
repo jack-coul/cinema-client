@@ -1,79 +1,97 @@
-* {
-    box-sizing: border-box;
-  }
-  .seansMap{
-    margin-top: 20px;
-  }
-  .seans {
-    width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-    
-  .timing {
-    font-size: 16px;
-    padding: 10px;
-    padding-left: 50px;
-    background-color: #f2f2f5;
-  }
+.seansMap {
+  margin-top: 20px;
+}
+.seans {
+  background-color: #ffffff;
+  padding-bottom: 20px;
+}
+
+.timing {
+  font-size: 16px;
+  padding: 10px;
+  padding-left: 45px;
+  background-color: #f2f2f5;
+}
+
+.seansList {
+  display: flex;
+
+  margin: 0 50px;
+  padding: 20px 0;
+  border-bottom: 1px solid #f2f2f5;
+}
+.seansList:hover {
+  transition: 1s;
+  background-color: #f2f2f5;
+}
+
+.timing button {
+  height: 32px;
+  border-radius: 20px;
+  padding: 0 16px;
+  border: 1px solid rgb(185, 185, 185);
+  color: black;
+  cursor: pointer;
+}
+
+.fortimeButton {
+  padding: 0;
   
-  .seansList {
-    display: flex;
-    margin: 0 50px;
-    padding: 20px 0;
-    border-bottom: 1px solid #f2f2f5;
-  }
-  .seansList:hover {
-    background-color: #f2f2f5;
-  }
+}
+
+.timeButton {
+  width: 64px;
+  height: 32px;
+  padding: 0 12px;
+  line-height: 32px;
+  background-color: #f20361;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.info {
+  margin-left: 20px;
+  line-height: 24px;
+}
+.name {
+  font-weight: bold;
+}
+
+.genre,
+.options {
+  font-size: 13px;
+  color: gray;
+}
+span {
+  margin-right: 5px;
+  padding: 1px;
+}
+.genre span {
+  background-color: #f2f2f5;
+}
+.today {
+  background-color: #fff;
+  color: #111;
+  margin-right: 10px;
+
+}
+
+.today:hover {
+  transition: 1s;
+  border: 1px solid #f20361;
+  color: #f20361;
+}
+.aftertomorrow:hover {
+  transition: 1s;
+  color: #f20361;
+  border: 1px solid #f20361;
+}
+
+.tomorrow,
+.aftertomorrow {
+  background-color: #fff;
+  margin-right: 10px;
   
-  .timing button {
-    height: 32px;
-    border-radius: 20px;
-    padding: 0 16px;
-    border: none;
-  }
-  
-  .fortimeButton{
-    padding: 0;
-  }
-  
-  .timeButton {
-    width: 64px;
-    height: 32px;
-    padding: 0 12px;
-    line-height: 32px;
-    background-color: red;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-  }
-  .info{
-    margin-left: 20px;
-    line-height: 24px;
-  }
-  .name{
-    font-weight: bold;
-    
-  }
-  .genre, .options{
-    font-size: 13px;
-    color: gray;
-  }
-  span{
-    margin-right: 5px;
-    padding: 1px;
-  }
-  .genre span{
-    background-color: #f2f2f5
-  }
-  .today {
-    background-color:red;
-    color: white;
-    margin-right: 10px;
-  }
-  
-  .tomorrow, .aftertomorrow {
-    background-color: #fff;
-    margin-right: 10px;
-  }
+}

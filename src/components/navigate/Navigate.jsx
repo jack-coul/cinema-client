@@ -11,17 +11,27 @@ import { Link } from "react-router-dom";
 const Navigate = () => {
   return (
     <div className={styles.navigate}>
-      <div className={styles.navigateWrap}>
+
+<div className={styles.wrapNavigate}>
+  <div className={styles.navigateWrap}>
         {" "}
         <Poster />
         <Sessions />
         <News />
         <Contacts />
       </div>
-      {/* <SingIn />
+ 
+
+      <div className={styles.singWrap}>
+        
+        <Link className={styles.singUp} to="/registr">Регистрация</Link>
+        <Link to="/authorization">вход</Link>
+      </div>
+</div>
+      
+
+           {/* <SingIn />
       <SingUp />  ss*/}
-      <Link to="/registr">Регистрация</Link>
-      <Link to="/authorization">вход</Link>
 
       <div className={styles.navigateFromDates}>
         <div className={styles.navigateFromDatesWrap}>
