@@ -19,7 +19,7 @@ const Navigate = () => {
         <Contacts />
       </div>
       {/* <SingIn />
-      <SingUp /> */}
+      <SingUp />  ss*/}
       <Link to="/registr">Регистрация</Link>
       <Link to="/authorization">вход</Link>
 
