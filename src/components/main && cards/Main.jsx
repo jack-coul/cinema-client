@@ -11,12 +11,19 @@ const Main = () => {
   return (
     <>
       <Navigate />
-      <div className={styles.main}>
-        <Cards />
-        <MainNews />
-        <SoonContainer />
-      </div>
+
       <Routes>
+        <Route
+          path="/"
+          element={
+            <div className={styles.main}>
+              <Cards />
+              <MainNews />
+              <SoonContainer />
+            </div>
+          }
+        />
+
         <Route path="/seances" element={<Seans />} />
       </Routes>
     </>
