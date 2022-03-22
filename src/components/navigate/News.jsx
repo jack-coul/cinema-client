@@ -4,7 +4,7 @@ import styles from "./Navigate.module.css";
 
 const News = () => {
   return (
-    <Link to="/news">
+    <Link to="/newspage">
       <div className={styles.news}>Новости</div>
     </Link>
   );
