@@ -1,0 +1,29 @@
+.item_info_socials img {
+   width:20px;
+  }
+
+  .item_info_socials {
+   display: block;
+   margin-top: 50px;
+  }
+
+
+  .info_contacts span {
+      color:red;
+}
+
+.menu_contacts {
+  justify-content: space-between;
+  display: flex;
+  width:700px;
+  font-family: 'Roboto',sans-serif;
+}
+
+.inst_logo {
+    border:none;
+    color:red;
+    margin-bottom: 20px;
+}
+
+
+

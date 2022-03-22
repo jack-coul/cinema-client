@@ -6,6 +6,7 @@ import News from "./News";
 import Contacts from "./Contacts";
 import Today from "./dateNavigation/Today";
 import Tomorrow from "./dateNavigation/Tomorrow";
+import { Link } from "react-router-dom";
 
 const Navigate = () => {
   return (
@@ -17,12 +18,16 @@ const Navigate = () => {
         <News />
         <Contacts />
       </div>
+      {/* <SingIn />
+      <SingUp /> */}
+      <Link to="/registr">Регистрация</Link>
+      <Link to="/authorization">вход</Link>
+
       <div className={styles.navigateFromDates}>
-          <div className={styles.navigateFromDatesWrap}>
+        <div className={styles.navigateFromDatesWrap}>
           <Today />
           <Tomorrow />
-          </div>
-          
+        </div>
       </div>
     </div>
   );
