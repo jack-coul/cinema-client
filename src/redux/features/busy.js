@@ -45,3 +45,5 @@ export const toBookThePlace = (number) => {
     }
   };
 };
+
+export default busy;
