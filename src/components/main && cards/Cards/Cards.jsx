@@ -12,6 +12,7 @@ const Cards = () => {
       {/* {films.map((film) => {
         return <Card film={film} />;
       })} */}
+      
       <Card />
       <Card />
       <CardTomorrow />

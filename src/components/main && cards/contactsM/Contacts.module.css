@@ -1,29 +1,34 @@
 .item_info_socials img {
-   width:20px;
-  }
+  width: 20px;
+}
 
-  .item_info_socials {
-   display: block;
-   margin-top: 50px;
-  }
+.item_info_socials {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px 0 0;
+  text-align: left;
+  padding-bottom: 25px;
+}
+.item_info_socials span {
+  color: #f20361;
+}
 
-
-  .info_contacts span {
-      color:red;
+.info_contacts span {
+  color: #f20361;
 }
 
 .menu_contacts {
   justify-content: space-between;
   display: flex;
-  width:700px;
-  font-family: 'Roboto',sans-serif;
+  padding: 0px 300px 0 45px;
+  color: black;
+  background-color: white;
+  font-family: "Roboto", sans-serif;
 }
 
 .inst_logo {
-    border:none;
-    color:red;
-    margin-bottom: 20px;
+  border: none;
+  color: red;
+  margin-bottom: 20px;
 }
-
-
-
