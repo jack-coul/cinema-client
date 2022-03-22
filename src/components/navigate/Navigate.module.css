@@ -67,3 +67,19 @@ a {
   margin-left: 45px;
   justify-content: space-between;
 }
+.wrapNavigate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 70px;
+}
+.wrapNavigate a {
+  color: black;
+}
+.wrapNavigate a:hover {
+  transition: 1s;
+  color: #f20361;
+}
+.singUp {
+  margin-right: 10px;
+}
