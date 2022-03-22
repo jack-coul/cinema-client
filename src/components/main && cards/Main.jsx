@@ -6,11 +6,12 @@ import MainNews from "./news/MainNews";
 import SoonContainer from "./soon/SoonContainer";
 import { Route, Routes } from "react-router-dom";
 import Seans from "../main && cards/seans/Seans";
+import NewsPage from "./news/NewsPage";
 
 const Main = () => {
   return (
     <>
-      <Navigate />
+      <Navigate/>
 
       <Routes>
         <Route
@@ -23,8 +24,18 @@ const Main = () => {
             </div>
           }
         />
-
         <Route path="/seances" element={<Seans />} />
+        <Route
+          path="/newspage"
+          element={
+            <>
+              <NewsPage />
+              <div className={styles.main}>
+                <SoonContainer />
+              </div>
+            </>
+          }
+        />
       </Routes>
     </>
   );

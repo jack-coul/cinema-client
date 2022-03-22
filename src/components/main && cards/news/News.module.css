@@ -47,3 +47,36 @@
     transition: 1s;
     color: #ff3d8b;
 }
+.news{
+  background-color: white;
+}
+.newsTitle{
+  margin: 20px 50px;
+  font-size: 40px;
+  font-weight: 900;
+}
+.newsTitles{
+  margin: 0px 40px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 75px 0px 8px ;
+}
+.newsTitles h2{
+  margin: 0px;
+}
+.populateFilmTitle{
+  font-size: 30px;
+  font-weight: 900;
+}
+.newsContent{
+  margin: 0px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.newsMain{
+  margin-top: 10px;
+}
+.newsWrap{
+  padding-bottom: 10px ;
+
+}

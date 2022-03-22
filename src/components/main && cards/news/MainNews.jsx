@@ -5,7 +5,7 @@ import arrowRight from "../../../images/right-arrow.png";
 
 const MainNews = () => {
   return (
-    <div>
+    <div className={styles.newsWrap}>
       <div className={styles.titleWrap}>
         <div className={styles.newsTitle}>
           <h1>Новости</h1>
