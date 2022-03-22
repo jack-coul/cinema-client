@@ -2,12 +2,24 @@ import React from "react";
 import styles from "./Seans.module.css";
 
 const Seans = () => {
+  const today = new Date();
+  const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
+  const dayTomorrow = tomorrow.getDate();
+  const monthTomorrow = tomorrow.getMonth() + 1;
+  const yearTomorrow = tomorrow.getFullYear();
+  const getZero = (num) => {
+    num = num < 10 ? "0" + num : num;
+    return num;
+  };
   return (
     <div className={styles.seans}>
       <div className={styles.timing}>
         <button className={styles.today}>Сегодня</button>
         <button className={styles.tomorrow}>Завтра</button>
-        <button className={styles.aftertomorrow}>Среда 23 мар</button>
+        <button className={styles.aftertomorrow}>
+          Среда,
+          {` ${getZero(dayTomorrow)} ${getZero(monthTomorrow)} ${yearTomorrow}`}
+        </button>
       </div>
       <div className={styles.seansMap}>
         <div className={styles.seansList}>

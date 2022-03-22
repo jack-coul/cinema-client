@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import Seans from "../seans/Seans";
 import styles from "./Cards.module.css";
 
 const Card = () => {
+  const [seanesModal, setSeanesModal] = useState(false);
   return (
     <div className={styles.card}>
       <div className={styles.backroundImgWrap}>
@@ -17,6 +19,7 @@ const Card = () => {
         <div className={styles.genres}>драма</div>
       </div>
       <div className={styles.seanses}>Сеансы на Сегодня</div>
+      {seanesModal && <Seans />}
     </div>
   );
 };
