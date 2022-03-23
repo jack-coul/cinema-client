@@ -5,10 +5,10 @@ import Tomorrow from './Tomorrow';
 
 const DateNav = () => {
     return (
-        <div>
+        <>
             <Today/>
             <Tomorrow/>
-        </div>
+        </>
     );
 };
 

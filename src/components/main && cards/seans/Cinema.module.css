@@ -1,0 +1,79 @@
+.greenBlock {
+  background-color: greenyellow;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+.greyBlock {
+  background-color: rgb(179, 179, 179);
+  width: 12px;
+  margin-left: 12px;
+  height: 12px;
+  border-radius: 12px;
+}
+.priceAndPlace {
+  margin-right: 8px;
+}
+.priceContainer {
+  width: 140px;
+  margin: auto;
+}
+.priceWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.display {
+  margin-top: 10px;
+}
+.closeButton {
+  position: absolute;
+  font-size: 30px;
+  right: 15px;
+  cursor: pointer;
+}
+.places {
+  background-color: greenyellow;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.select {
+  background-color: rgb(95, 95, 94);
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.number {
+  position: absolute;
+  top: 31%;
+  left: 43%;
+  opacity: 0;
+}
+.places:hover .number {
+  border-radius: 50px;
+  opacity: 1;
+}
+.select:hover .number {
+  opacity: 1;
+  font-size: 25px;
+  color: rgb(255, 255, 255);
+  top: 18%;
+  left: 40%;
+}
+.places:hover {
+  transition: 1s;
+}
+.wrapPlaces {
+  width: 700px;
+  margin: auto;
+  padding: 15px 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
