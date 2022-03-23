@@ -1,8 +1,16 @@
 import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getSeanses } from "../../../redux/features/seans";
 import Sean from "./Sean";
 import styles from "./Seans.module.css";
 
 const Seans = () => {
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(getSeanses())
+  },[dispatch])
+  const seans = useSelector(state => state.seans.seans)
   const today = new Date();
   const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
   const dayTomorrow = tomorrow.getDate();
@@ -21,48 +29,11 @@ const Seans = () => {
           {` ${getZero(dayTomorrow)} ${getZero(monthTomorrow)} ${yearTomorrow}`}
         </button>
       </div>
-      <Sean
-        dayTomorrow={dayTomorrow}
-        monthTomorrow={monthTomorrow}
-        yearTomorrow={yearTomorrow}
-        getZero={getZero}
-      />
-      <Sean
-        dayTomorrow={dayTomorrow}
-        monthTomorrow={monthTomorrow}
-        yearTomorrow={yearTomorrow}
-        getZero={getZero}
-      />
-      <Sean
-        dayTomorrow={dayTomorrow}
-        monthTomorrow={monthTomorrow}
-        yearTomorrow={yearTomorrow}
-        getZero={getZero}
-      />
-      <Sean
-        dayTomorrow={dayTomorrow}
-        monthTomorrow={monthTomorrow}
-        yearTomorrow={yearTomorrow}
-        getZero={getZero}
-      />
-      <Sean
-        dayTomorrow={dayTomorrow}
-        monthTomorrow={monthTomorrow}
-        yearTomorrow={yearTomorrow}
-        getZero={getZero}
-      />
-      <Sean
-        dayTomorrow={dayTomorrow}
-        monthTomorrow={monthTomorrow}
-        yearTomorrow={yearTomorrow}
-        getZero={getZero}
-      />
-      <Sean
-        dayTomorrow={dayTomorrow}
-        monthTomorrow={monthTomorrow}
-        yearTomorrow={yearTomorrow}
-        getZero={getZero}
-      />
+      {seans.map(sean=>{
+        return(
+          <Sean name={sean.film.name} time = {sean.time} hall = {sean.hall} genre = {sean.discription.genre}/>
+        )
+      })}
     </div>
   );
 };
