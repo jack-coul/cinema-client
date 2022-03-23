@@ -59,8 +59,12 @@
 
 .number {
   position: absolute;
-  top: 31%;
-  left: 43%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  line-height: 50px;
   opacity: 0;
 }
 .places:hover .number {
@@ -69,10 +73,13 @@
 }
 .select:hover .number {
   opacity: 1;
-  font-size: 25px;
   color: rgb(255, 255, 255);
-  top: 18%;
-  left: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  line-height: 50px;
 }
 .places:hover {
   transition: 1s;
@@ -95,7 +102,7 @@
   background-color: greenyellow;
   border-radius: 5px;
   border: 0;
-  color: #FFF;
+  color: #fff;
 }
 .wrapButtonAndCards {
   display: flex;
@@ -113,4 +120,3 @@
   border-radius: 5px;
   cursor: pointer;
 }
-
