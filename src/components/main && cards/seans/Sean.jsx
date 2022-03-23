@@ -3,6 +3,7 @@ import styles from "./Seans.module.css";
 import style from "./Cinema.module.css";
 import img from "../../../images/28fea504eb8034a8c957405dd134e2e5.png";
 import Place from "./Place";
+import ReservedPlace from "./ReservedPlace";
 
 const Sean = ({ time, hall, name, genre }) => {
 
@@ -42,7 +43,7 @@ const Sean = ({ time, hall, name, genre }) => {
           <div className={styles.wrapWrap}>
             <div className={styles.cinemaInfoWrap}>
               <div className={styles.cinemaName}>Лунные приключения</div>
-              <div className={styles.cinemaTime}>{time}</div>
+              <div className={styles.ycinemaTime}>{time}</div>
             </div>
             <div className={styles.wrapCinemaPlases}>
               <div className={styles.wrapInfo}>
@@ -71,6 +72,11 @@ const Sean = ({ time, hall, name, genre }) => {
 
               </div>
             </div>
+          </div>
+          <div className={style.wrapButtonAndCards}>
+            <ReservedPlace />
+
+            <button className={style.bueBillets}>Купить</button>
           </div>
         </div>
       ) : (
