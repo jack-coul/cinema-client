@@ -6,10 +6,11 @@ import News from "./News";
 import Contacts from "./Contacts";
 import Today from "./dateNavigation/Today";
 import Tomorrow from "./dateNavigation/Tomorrow";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useLinkClickHandler} from "react-router-dom";
 import DateNav from "./dateNavigation/DateNav";
 
 const Navigate = () => {
+  
   return (
     <>
     <div className={styles.navigate}>

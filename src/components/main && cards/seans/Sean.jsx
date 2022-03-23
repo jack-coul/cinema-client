@@ -5,6 +5,19 @@ import img from "../../../images/28fea504eb8034a8c957405dd134e2e5.png";
 import Place from "./Place";
 
 const Sean = ({ time, hall, name, genre }) => {
+
+
+
+ 
+ 
+    const placeArr = []
+    for(let i = 0; i <35; i++){
+         placeArr.push(i+1)
+    }
+    const [count, setCount]= useState(placeArr.length)
+
+    const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
+
   const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
 
   const hundleShowCinemaPlaces = () => {
@@ -15,6 +28,16 @@ const Sean = ({ time, hall, name, genre }) => {
     setOpenCinemaPlace(false);
   };
 
+
+    const hundleShowCinemaPlaces = () => {
+      setOpenCinemaPlace(true);
+    
+    };
+  
+    const hundleCloseWindow = () => {
+      setOpenCinemaPlace(false);
+      setCount(placeArr.length)
+    }
   return (
     <>
       {openCinemaPlace ? (
@@ -25,7 +48,7 @@ const Sean = ({ time, hall, name, genre }) => {
           <div className={styles.wrapWrap}>
             <div className={styles.cinemaInfoWrap}>
               <div className={styles.cinemaName}>Лунные приключения</div>
-              <div className={styles.cinemaTime}>13:00</div>
+              <div className={styles.cinemaTime}>{time}</div>
             </div>
             <div className={styles.wrapCinemaPlases}>
               <div className={styles.wrapInfo}>
@@ -36,59 +59,22 @@ const Sean = ({ time, hall, name, genre }) => {
                     <div className={style.greyBlock}></div>
                     <div className={style.priceAndPlace}>Занято</div>
                   </div>
-                  <div className={style.placeLeft}>Осталось 70 мест</div>
+                  <div className={style.placeLeft}>Осталось {count} мест</div>
                 </div>
                 <div className={style.display}>
                   <img src={img} alt="" />
                 </div>
 
-                <div className={style.wrapPlaces}>
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                </div>
+
+               <div className={style.wrapPlaces}>
+                {placeArr.map((place)=>{
+                  console.log(place)
+                  return <Place place = {place} count={count} setCount={setCount}/>
+                })
+                }
+                 
+               </div>
+
               </div>
             </div>
           </div>
@@ -112,7 +98,7 @@ const Sean = ({ time, hall, name, genre }) => {
               <span>•</span>
               <span>20$</span>
               <span>•</span>
-              <span>{hall}</span>
+              <span>{hall.status}</span>
             </div>
           </div>
         </div>
