@@ -10,41 +10,40 @@ import { Link, Route, Routes } from "react-router-dom";
 import DateNav from "./dateNavigation/DateNav";
 
 const Navigate = () => {
-  
   return (
-    
+    <>
     <div className={styles.navigate}>
-  
-  <div className={styles.wrapNavigate}>
-    <div className={styles.navigateWrap}>
+      <div className={styles.wrapNavigate}>
+        <div className={styles.navigateWrap}>
           {" "}
           <Poster />
           <Sessions />
           <News />
           <Contacts />
         </div>
-   
-  
+
         <div className={styles.singWrap}>
-          
-          <Link className={styles.singUp} to="/signup">Регистрация</Link>
+          <Link className={styles.singUp} to="/signup">
+            Регистрация
+          </Link>
           <Link to="/signin">вход</Link>
         </div>
-  </div>
-        
-  
-             {/* <SingIn />
+      </div>
+
+      {/* <SingIn />
         <SingUp />  ss*/}
-  
-        <div className={styles.navigateFromDates}>
-          <div className={styles.navigateFromDatesWrap}>
-        <Routes>
-            <Route path ="/" element={<DateNav/>} />
-    </Routes>
-          </div>
+
+     
+    </div>
+    <div className={styles.navigateFromDates}>
+        <div className={styles.navigateFromDatesWrap}>
+          <Routes>
+            <Route path="/" element={<DateNav />} />
+          </Routes>
         </div>
       </div>
-    );
+    </>
+  );
 };
 
 export default Navigate;

@@ -59,11 +59,12 @@ a {
   border-bottom: 1px solid rgb(199, 199, 199);
   border-top: 1px solid rgb(199, 199, 199);
   background-color: rgb(226, 226, 226);
-  padding: 12px 0;
+
 }
 .navigateFromDatesWrap {
   display: flex;
   width: 130px;
+  /* margin: 5px 0; */
   margin-left: 45px;
   justify-content: space-between;
 }
