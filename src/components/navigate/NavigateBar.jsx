@@ -6,13 +6,11 @@ import News from "./News";
 import Contacts from "./Contacts";
 import Today from "./dateNavigation/Today";
 import Tomorrow from "./dateNavigation/Tomorrow";
-import { Link, Route, Routes, useLinkClickHandler} from "react-router-dom";
+import { Link, Route, Routes, useLinkClickHandler } from "react-router-dom";
 import DateNav from "./dateNavigation/DateNav";
 
-const Navigate = () => {
-  
+const NavigateBar = () => {
   return (
-    <>
     <div className={styles.navigate}>
       <div className={styles.wrapNavigate}>
         <div className={styles.navigateWrap}>
@@ -34,17 +32,15 @@ const Navigate = () => {
       {/* <SingIn />
         <SingUp />  ss*/}
 
-     
-    </div>
-    <div className={styles.navigateFromDates}>
+      <div className={styles.navigateFromDates}>
         <div className={styles.navigateFromDatesWrap}>
           <Routes>
             <Route path="/" element={<DateNav />} />
           </Routes>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default Navigate;
+export default NavigateBar;

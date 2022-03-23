@@ -18,15 +18,9 @@ const Sean = ({ time, hall, name, genre }) => {
 
     const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
 
-  const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
 
-  const hundleShowCinemaPlaces = () => {
-    setOpenCinemaPlace(true);
-  };
 
-  const hundleCloseWindow = () => {
-    setOpenCinemaPlace(false);
-  };
+
 
 
     const hundleShowCinemaPlaces = () => {
