@@ -90,20 +90,5 @@ export const getOneFilm = (id) => {
   };
 };
 
-export const getFilmsFromCategory = (id) => {
-  return async (dispatch) => {
-    dispatch({ type: "get/GategoryFilms/pending" });
-    try {
-      const res = await fetch(`http://localhost:4000/film/category/${id}`);
-      const filmsFromCategory = await res.json();
-      dispatch({
-        type: "get/GategoryFilms/fulfilled",
-        payload: filmsFromCategory,
-      });
-    } catch (error) {
-      dispatch({ type: "get/GategoryFilms/rejected", error });
-    }
-  };
-};
 
 export default films;

@@ -6,6 +6,42 @@ const initialState = {
 
 const busy = (state = initialState, action) => {
   switch (action.type) {
+    case "get/busy/pending":
+      return {
+        ...state,
+        loadingBusy: true,
+        error: null,
+      };
+    case "get/busy/fulfilled":
+      return {
+        ...state,
+        loadingBusy: false,
+        busy: [...action.payload],
+      };
+    case "get/busy/rejected":
+      return {
+        ...state,
+        loadingBusy: false,
+        error: action.payload,
+      };
+    case "toBook/fetch/pending":
+      return {
+        ...state,
+        loadingBusy: true,
+        error: null,
+      };
+    case "toBook/fetch/fulfilled":
+      return {
+        ...state,
+        loadingBusy: false,
+        busy: [...state.busy, { ...action.payload }],
+      };
+    case "toBook/fetch/rejected":
+      return {
+        ...state,
+        loadingBusy: false,
+        error: action.payload,
+      };
     default:
       return state;
   }
