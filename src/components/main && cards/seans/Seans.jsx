@@ -31,7 +31,7 @@ const Seans = () => {
       </div>
       {seans.map(sean=>{
         return(
-          <Sean name={sean.film.name} time = {sean.time} hall = {sean.hall} genre = {sean.discription.genre}/>
+          <Sean name={sean.film.name} time = {sean.time} hall = {sean.hall} genre = {sean.film.discription.genre}/>
         )
       })}
     </div>
