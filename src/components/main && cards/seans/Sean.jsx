@@ -1,12 +1,104 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Seans.module.css";
+import style from "./Cinema.module.css";
+import img from "../../../images/28fea504eb8034a8c957405dd134e2e5.png"
+import Place from "./Place";
+
 
 const Sean = ({ time, hall, name, genre }) => {
+
+
+  const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
+
+  const hundleShowCinemaPlaces = () => {
+    setOpenCinemaPlace(true);
+  };
+
+  const hundleCloseWindow = () => {
+    setOpenCinemaPlace(false);
+  }
+
   return (
     <>
+      {openCinemaPlace ? (
+        <div className={styles.cinemaPlaseWrap}>
+            <div onClick={hundleCloseWindow} className={style.closeButton}>x</div>
+          <div className={styles.wrapWrap}>
+            <div className={styles.cinemaInfoWrap}>
+              <div className={styles.cinemaName}>Лунные приключения</div>
+              <div className={styles.cinemaTime}>13:00</div>
+            </div>
+            <div className={styles.wrapCinemaPlases}>
+              <div className={styles.wrapInfo}>
+                <div className={style.priceContainer}>
+                  <div className={style.priceWrap}>
+                    <div className={style.greenBlock}></div>
+                    <div className={style.priceAndPlace}>200 $</div>
+                    <div className={style.greyBlock}></div>
+                    <div className={style.priceAndPlace}>Занято</div>
+                  </div>
+                  <div className={style.placeLeft}>Осталось 70 мест</div>
+                </div>
+               <div className={style.display}>
+                  <img src={img} alt="" />
+               </div>
 
+               <div className={style.wrapPlaces}>
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />           
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+                 <Place />
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
       <div className={styles.seansMap}>
-        <div className={styles.seansList}>
+        <div onClick={hundleShowCinemaPlaces} className={styles.seansList}>
           <div className={styles.fortimeButton}>
             <button className={styles.timeButton}>{time}</button>
           </div>
