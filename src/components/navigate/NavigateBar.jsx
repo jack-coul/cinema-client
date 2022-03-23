@@ -4,12 +4,10 @@ import styles from "./Navigate.module.css";
 import Sessions from "./Sessions";
 import News from "./News";
 import Contacts from "./Contacts";
-import Today from "./dateNavigation/Today";
-import Tomorrow from "./dateNavigation/Tomorrow";
 import { Link, Route, Routes } from "react-router-dom";
 import DateNav from "./dateNavigation/DateNav";
 
-const Navigate = () => {
+const NavigateBar = () => {
   return (
     <div className={styles.navigate}>
       <div className={styles.wrapNavigate}>
@@ -43,4 +41,4 @@ const Navigate = () => {
   );
 };
 
-export default Navigate;
+export default NavigateBar;
