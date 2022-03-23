@@ -10,6 +10,7 @@ const Sean = ({ time, hall, name, genre }) => {
   for (let i = 0; i < 35; i++) {
     placeArr.push(i + 1);
   }
+
   const [count, setCount] = useState(placeArr.length);
 
   const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
@@ -31,7 +32,7 @@ const Sean = ({ time, hall, name, genre }) => {
           </div>
           <div className={styles.wrapWrap}>
             <div className={styles.cinemaInfoWrap}>
-              <div className={styles.cinemaName}>Лунные приключения</div>
+              <div className={styles.cinemaName}>{name}</div>
               <div className={styles.ycinemaTime}>{time}</div>
             </div>
             <div className={styles.wrapCinemaPlases}>
