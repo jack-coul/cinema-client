@@ -3,6 +3,7 @@ import styles from "../Navigate.module.css";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../../redux/features/user";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SingIn = () => {
   const dispatch = useDispatch();
@@ -39,7 +40,37 @@ const SingIn = () => {
     dispatch(loginUser(login, password));
   };
 
-  return <div className={styles.singIn}></div>;
+  return (
+    <div className={styles.singIn}>
+      <div className="login-box">
+        <h2>Login</h2>
+        <form>
+          <div className="user-box">
+            <input type="text" name="" required="" />
+            <label>Username</label>
+          </div>
+          <div className="user-box">
+            <input type="password" name="" required="" />
+            <label>Password</label>
+          </div>
+          <div className="buttons">
+            <Link to="#">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>Sign in
+            </Link>
+            <Link to="/signup">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>Sign up
+            </Link>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 };
 
 export default SingIn;
