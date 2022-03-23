@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styles from "./Seans.module.css";
 import style from "./Cinema.module.css";
-import img from "../../../images/28fea504eb8034a8c957405dd134e2e5.png"
+import img from "../../../images/28fea504eb8034a8c957405dd134e2e5.png";
 import Place from "./Place";
 
-
 const Sean = ({ time, hall, name, genre }) => {
+
 
 
  
@@ -17,6 +17,17 @@ const Sean = ({ time, hall, name, genre }) => {
     const [count, setCount]= useState(placeArr.length)
 
     const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
+
+  const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
+
+  const hundleShowCinemaPlaces = () => {
+    setOpenCinemaPlace(true);
+  };
+
+  const hundleCloseWindow = () => {
+    setOpenCinemaPlace(false);
+  };
+
 
     const hundleShowCinemaPlaces = () => {
       setOpenCinemaPlace(true);
@@ -31,7 +42,9 @@ const Sean = ({ time, hall, name, genre }) => {
     <>
       {openCinemaPlace ? (
         <div className={styles.cinemaPlaseWrap}>
-            <div onClick={hundleCloseWindow} className={style.closeButton}>x</div>
+          <div onClick={hundleCloseWindow} className={style.closeButton}>
+            x
+          </div>
           <div className={styles.wrapWrap}>
             <div className={styles.cinemaInfoWrap}>
               <div className={styles.cinemaName}>Лунные приключения</div>
@@ -48,9 +61,10 @@ const Sean = ({ time, hall, name, genre }) => {
                   </div>
                   <div className={style.placeLeft}>Осталось {count} мест</div>
                 </div>
-               <div className={style.display}>
+                <div className={style.display}>
                   <img src={img} alt="" />
-               </div>
+                </div>
+
 
                <div className={style.wrapPlaces}>
                 {placeArr.map((place)=>{
@@ -60,6 +74,7 @@ const Sean = ({ time, hall, name, genre }) => {
                 }
                  
                </div>
+
               </div>
             </div>
           </div>
