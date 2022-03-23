@@ -6,33 +6,22 @@ import Place from "./Place";
 import ReservedPlace from "./ReservedPlace";
 
 const Sean = ({ time, hall, name, genre }) => {
+  const placeArr = [];
+  for (let i = 0; i < 35; i++) {
+    placeArr.push(i + 1);
+  }
+  const [count, setCount] = useState(placeArr.length);
 
+  const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
 
+  const hundleShowCinemaPlaces = () => {
+    setOpenCinemaPlace(true);
+  };
 
- 
- 
-    const placeArr = []
-    for(let i = 0; i <35; i++){
-         placeArr.push(i+1)
-    }
-    const [count, setCount]= useState(placeArr.length)
-
-    const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
-
-
-
-
-
-
-    const hundleShowCinemaPlaces = () => {
-      setOpenCinemaPlace(true);
-    
-    };
-  
-    const hundleCloseWindow = () => {
-      setOpenCinemaPlace(false);
-      setCount(placeArr.length)
-    }
+  const hundleCloseWindow = () => {
+    setOpenCinemaPlace(false);
+    setCount(placeArr.length);
+  };
   return (
     <>
       {openCinemaPlace ? (
@@ -60,16 +49,14 @@ const Sean = ({ time, hall, name, genre }) => {
                   <img src={img} alt="" />
                 </div>
 
-
-               <div className={style.wrapPlaces}>
-                {placeArr.map((place)=>{
-                  console.log(place)
-                  return <Place place = {place} count={count} setCount={setCount}/>
-                })
-                }
-                 
-               </div>
-
+                <div className={style.wrapPlaces}>
+                  {placeArr.map((place) => {
+                    console.log(place);
+                    return (
+                      <Place place={place} count={count} setCount={setCount} />
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
