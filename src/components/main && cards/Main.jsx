@@ -50,7 +50,7 @@ const Main = () => {
       </>
     );
   }
-  return (
+  return ( 
     <>
       <NavigateBar />
 
