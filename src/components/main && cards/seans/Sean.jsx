@@ -6,7 +6,6 @@ import Place from "./Place";
 import ReservedPlace from "./ReservedPlace";
 
 const Sean = ({ time, hall, name, genre }) => {
-  console.log(hall);
   const placeArr = [];
   for (let i = 0; i < 35; i++) {
     placeArr.push(i + 1);

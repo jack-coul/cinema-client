@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { registerUser } from "../../../redux/features/user";
 import styles from "../Navigate.module.css";
+import style from "./Signin.module.css";
 
 const SingUp = () => {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ const SingUp = () => {
         <h2>Login</h2>
         <form>
           <div className="user-box">
+
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -78,6 +80,7 @@ const SingUp = () => {
             <label>Password</label>
             <span>{validPassword}</span>
             <span>{searchEmail && searchEmail}</span>
+
           </div>
           <div className="buttons">
             <Link onClick={() => handleRegister(name, login, password)} to="#">

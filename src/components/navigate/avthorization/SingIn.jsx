@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../Navigate.module.css";
+import style from "./Signin.module.css";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../../redux/features/user";
 import { useState } from "react";
@@ -46,6 +47,8 @@ const SingIn = () => {
         <h2>Login</h2>
         <form>
           <div className="user-box">
+
+            <label>Email</label>
             <input
               value={login}
               onChange={(e) => handleValidEmail(e)}
@@ -53,10 +56,12 @@ const SingIn = () => {
               name=""
               required=""
             />
-            <label>Email</label>
-            <span>{validLogin}</span>
+
+            <div className={style.validLogins}>{validLogin}</div>
           </div>
           <div className="user-box">
+
+            <label>Password</label>
             <input
               value={password}
               onChange={(e) => handleValidPassword(e)}
@@ -64,11 +69,13 @@ const SingIn = () => {
               name=""
               required=""
             />
-            <label>Password</label>
-            <span>{validPassword}</span>
+
+            <div className={style.validLogins}>{validPassword}</div>
           </div>
           <div className="buttons">
+
             <Link onClick={() => handleLogin(login, password)} to="#">
+
               <span></span>
               <span></span>
               <span></span>
