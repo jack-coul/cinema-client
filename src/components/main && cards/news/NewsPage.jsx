@@ -12,8 +12,8 @@ const NewsPage = () => {
     dispatch(getAllNews());
   }, [dispatch]);
 
-  const news = useSelector(state => state.news.news)
-
+  const news = useSelector((state) => state.news.news);
+  console.log(news);
   return (
     <div className={styles.news}>
       <div className={styles.newsTitles}>
@@ -23,11 +23,8 @@ const NewsPage = () => {
       <div className={styles.newsMain}>
         <div className={styles.newsContent}>
           <div>
-            {news.map((news) => {
-              return (
-                   <News news={news} />
-              )
-           
+            {news.map((newsOne) => {
+              return <News news={newsOne} />;
             })}
           </div>
           <div>

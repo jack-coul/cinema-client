@@ -2,6 +2,7 @@ import React from "react";
 import News from "./News";
 import styles from "./News.module.css";
 import arrowRight from "../../../images/right-arrow.png";
+import NewsPage from "./NewsPage";
 
 const MainNews = () => {
   return (
@@ -14,10 +15,6 @@ const MainNews = () => {
           показать все <img src={arrowRight} alt="" />
         </div>
       </div>
-
-      <News />
-      <News />
-      <News />
     </div>
   );
 };
