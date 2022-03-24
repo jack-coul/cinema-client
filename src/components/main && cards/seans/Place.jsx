@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import style from "./Cinema.module.css";
 
-const Place = ({place, setCount, count}) => {
+const Place = ({place, setCount, count }) => {
 
     const [classSelected, setClassSelected] = useState('')
     const [styleSelected, setStyleSelected] = useState(false)
@@ -11,10 +11,13 @@ const Place = ({place, setCount, count}) => {
             setStyleSelected(true)
             setClassSelected(style.places)
             setCount(count-1)
+            
         } else {
             setStyleSelected(false)
             setClassSelected(style.select)
             setCount(count+1)
+           
+            
 
         }
     }

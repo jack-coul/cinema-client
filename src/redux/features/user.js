@@ -5,6 +5,12 @@ const inintialState = {
 
 const user = (state = inintialState, action) => {
   switch (action.type) {
+    case "Exit":
+      localStorage.removeItem("token")
+      return{
+        ...state,
+        token: null
+      }
     default:
       return {
         ...state,
@@ -18,7 +24,7 @@ export const registerUser = (name, login, password) => {
   return async (dispatch) => {
     dispatch({ type: "/user/register/pending" });
     try {
-      const user = await fetch("http://localhost:4000/user/register", {
+      const user = await fetch("http://localhost:4000/user/sign", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

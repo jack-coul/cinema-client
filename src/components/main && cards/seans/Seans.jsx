@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getHalls } from "../../../redux/features/hall";
 import { getSeanses } from "../../../redux/features/seans";
 import Sean from "./Sean";
 import styles from "./Seans.module.css";
@@ -10,6 +11,10 @@ const Seans = () => {
   useEffect(() => {
     dispatch(getSeanses());
   }, [dispatch]);
+  useEffect(()=>{
+    dispatch(getHalls())
+  },[dispatch])
+
   const seans = useSelector((state) => state.seans.seans);
   const today = new Date();
   const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
