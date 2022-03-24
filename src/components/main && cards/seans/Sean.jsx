@@ -3,41 +3,41 @@ import styles from "./Seans.module.css";
 import style from "./Cinema.module.css";
 import img from "../../../images/28fea504eb8034a8c957405dd134e2e5.png";
 import Place from "./Place";
-import ReservedPlace from "./ReservedPlace";
+// import ReservedPlace from "./ReservedPlace";
 import { useDispatch, useSelector } from "react-redux";
 import { addPlace, getSeans } from "../../../redux/features/seans";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Sean = ({ time, hall, name, genre, seanID }) => {
-  const dispatch = useDispatch()
-  const state = useSelector(state => state.seans.places)
+  const dispatch = useDispatch();
   const placeArr = [];
   for (let i = 0; i < hall.placesCount; i++) {
     placeArr.push(i + 1);
   }
-  
-  
+
+  const seans = useSelector((state) => state.seans.seans);
+  const token = useSelector((state) => state.user.token);
   const [count, setCount] = useState(placeArr.length);
 
   const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
+  useEffect(() => {
+    dispatch(getSeans(seanID));
+  }, [dispatch, seanID]);
 
   const hundleShowCinemaPlaces = () => {
     setOpenCinemaPlace(true);
   };
-  useEffect(()=>{
-    dispatch(getSeans(seanID))
-  },[dispatch])
-  
+
   const hundleCloseWindow = () => {
     setOpenCinemaPlace(false);
     setCount(placeArr.length);
   };
-  const handleAddPlace = (id)=>{
-    if(state!==null){
-
-      dispatch(addPlace(id))
+  const handleAddPlace = (id) => {
+    if (token) {
+      dispatch(addPlace(id));
     }
-  }
+  };
   return (
     <>
       {openCinemaPlace ? (
@@ -67,18 +67,28 @@ const Sean = ({ time, hall, name, genre, seanID }) => {
 
                 <div className={style.wrapPlaces}>
                   {placeArr.map((place) => {
-                      return(
-                          
-                        <Place place={place} count={count} setCount={setCount}  />
-                      )
+                    return (
+                      <Place
+                        place={place}
+                        state={seanID}
+                        seans={seans}
+                        count={count}
+                        setCount={setCount}
+                      />
+                    );
                   })}
                 </div>
               </div>
             </div>
           </div>
           <div className={style.wrapButtonAndCards}>
-            
-            <button onClick={(id)=> handleAddPlace(seanID)} className={style.bueBillets}>Купить</button>
+            <Link
+              onClick={() => handleAddPlace(seanID)}
+              className={style.bueBillets}
+              to={token ? "#" : "/signin"}
+            >
+              Купить
+            </Link>
           </div>
         </div>
       ) : (
