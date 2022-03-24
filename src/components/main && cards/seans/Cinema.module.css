@@ -105,7 +105,6 @@
   color: #fff;
 }
 .wrapButtonAndCards {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 15px;
@@ -120,3 +119,26 @@
   border-radius: 5px;
   cursor: pointer;
 }
+.bueBillets {
+  margin-left: 785px;
+  color: rgb(219, 219, 219);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 1s;
+
+}
+.bueBillets:hover {
+  transition: 1s;
+  color: rgb(129, 129, 129);
+  font-size: 26px;
+  font-weight: 600;
+}
+/* .bueBillets:after {
+  margin-left: 785px;
+  color: rgb(219, 219, 219);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+} */
