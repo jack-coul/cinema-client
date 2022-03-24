@@ -1,6 +1,8 @@
 const initialState = {
   seans: [],
   error: null,
+  places: [],
+  reservedPlace: []
 };
 
 const seans = (state = initialState, action) => {
@@ -35,6 +37,35 @@ const seans = (state = initialState, action) => {
         loadingSeans: false,
         seans: [...action.payload.seans],
       };
+    case "seans/patch/fullfilled":
+
+      console.log(state.reservedPlace)
+      return{
+        ...state,
+        places: null,
+        reservedPlace: [
+          ...state.reservedPlace,
+          action.payload
+        ]
+      
+
+      }
+      case "addPlace":
+        return{
+          ...state,
+          places: [
+            ...state.places,
+            action.payload
+          ]
+        }
+      case "deletePlace":
+        return{
+          ...state,
+          places: [
+            ...state.places.filter((place)=>place!==action.payload)
+          ]
+        
+        }
     default:
       return state;
   }
@@ -71,5 +102,26 @@ export const getSeans = (id) => {
     }
   };
 };
+
+export const addPlace = (id)=>{
+  return async (dispatch, getState)=>{
+    const state = getState()
+    const place = state.seans.places
+    try{
+      await fetch(`http://localhost:4000/seans/${id}`,{
+        method: "PATCH",
+        headers:{
+          Authorization: `Bearer ${state.user.token}`,
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({place})
+      })
+      dispatch({type: "seans/patch/fullfilled", payload: place})
+    }
+    catch(err){
+      dispatch({type: "seans/patch/rejected", error: err.toString()})
+    }
+  }
+}
 
 export default seans;

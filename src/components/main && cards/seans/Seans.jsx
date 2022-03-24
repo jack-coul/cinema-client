@@ -16,6 +16,7 @@ const Seans = () => {
   },[dispatch])
 
   const seans = useSelector((state) => state.seans.seans);
+  
 
   const today = new Date();
   const tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
@@ -38,6 +39,7 @@ const Seans = () => {
       {seans.map((sean) => {
         return (
           <Sean
+          seanID={sean._id}
             name={sean.film.name}
             key={sean._id}
             time={sean.time}
