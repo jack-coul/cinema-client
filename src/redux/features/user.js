@@ -24,7 +24,6 @@ const user = (state = inintialState, action) => {
         login: action.payload.name,
       };
     case "/user/register/rejected":
-      console.log(action.payload);
       return {
         ...state,
         loadUser: false,
@@ -37,14 +36,12 @@ const user = (state = inintialState, action) => {
         error: null,
       };
     case "/user/login/fulfilled":
-      console.log(action.payload);
       return {
         ...state,
         loadUser: false,
         token: action.payload,
       };
     case "/user/login/rejected":
-      console.log(2);
       return {
         ...state,
         loadUser: false,
@@ -74,7 +71,6 @@ export const registerUser = (name, login, password) => {
       if (user.user) {
         dispatch({ type: "/user/register/fullfilled", payload: user.user });
       } else {
-        console.log(1);
         dispatch({
           type: "/user/register/rejected",
           error: "Такой email уже существует",
@@ -99,8 +95,8 @@ export const loginUser = (login, password) => {
 
       const token = await res.json();
       if (token.token) {
-        dispatch({ type: "/user/login/fulfilled", payload: token });
-        localStorage.setItem("token", token);
+        dispatch({ type: "/user/login/fulfilled", payload: token.token });
+        localStorage.setItem("token", token.token);
       }
     } catch (err) {
       dispatch({ type: "/user/login/rejected", error: err.toString() });

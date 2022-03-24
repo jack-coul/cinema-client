@@ -2,7 +2,7 @@ const initialState = {
   seans: [],
   error: null,
   places: [],
-  reservedPlace: []
+  reservedPlace: [],
 };
 
 const seans = (state = initialState, action) => {
@@ -35,37 +35,24 @@ const seans = (state = initialState, action) => {
       return {
         ...state,
         loadingSeans: false,
-        seans: [...action.payload.seans],
+        seans: [...state.seans, ...action.payload],
       };
     case "seans/patch/fullfilled":
-
-      console.log(state.reservedPlace)
-      return{
+      return {
         ...state,
-        
-        reservedPlace: [
-          ...state.reservedPlace,
-          action.payload
-        ]
-      
 
-      }
-      case "addPlace":
-        return{
-          ...state,
-          places: [
-            ...state.places,
-            action.payload
-          ]
-        }
-      case "deletePlace":
-        return{
-          ...state,
-          places: [
-            ...state.places.filter((place)=>place!==action.payload)
-          ]
-        
-        }
+        reservedPlace: [...state.reservedPlace, action.payload],
+      };
+    case "addPlace":
+      return {
+        ...state,
+        places: [...state.places, action.payload],
+      };
+    case "deletePlace":
+      return {
+        ...state,
+        places: [...state.places.filter((place) => place !== action.payload)],
+      };
     default:
       return state;
   }
@@ -92,10 +79,7 @@ export const getSeans = (id) => {
       const seans = await res.json();
       dispatch({
         type: "get/seans/fulfilled",
-        payload: {
-          seans,
-          id,
-        },
+        payload: seans,
       });
     } catch (error) {
       dispatch({ type: "get/seans/fulfilled", error });
@@ -103,25 +87,24 @@ export const getSeans = (id) => {
   };
 };
 
-export const addPlace = (id)=>{
-  return async (dispatch, getState)=>{
-    const state = getState()
-    const place = state.seans.places
-    try{
-      await fetch(`http://localhost:4000/seans/${id}`,{
+export const addPlace = (id) => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    const place = state.seans.places;
+    try {
+      await fetch(`http://localhost:4000/seans/${id}`, {
         method: "PATCH",
-        headers:{
+        headers: {
           Authorization: `Bearer ${state.user.token}`,
-          "Content-type": "application/json"
+          "Content-type": "application/json",
         },
-        body: JSON.stringify({place})
-      })
-      dispatch({type: "seans/patch/fullfilled", payload: place})
+        body: JSON.stringify({ place }),
+      });
+      dispatch({ type: "seans/patch/fullfilled", payload: place });
+    } catch (err) {
+      dispatch({ type: "seans/patch/rejected", error: err.toString() });
     }
-    catch(err){
-      dispatch({type: "seans/patch/rejected", error: err.toString()})
-    }
-  }
-}
+  };
+};
 
 export default seans;
