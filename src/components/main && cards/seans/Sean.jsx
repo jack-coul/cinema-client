@@ -87,7 +87,7 @@ const Sean = ({ time, hall, name, genre }) => {
               <span>•</span>
               <span>20$</span>
               <span>•</span>
-              <span>{}</span>
+              <span>{hall.status}</span>
             </div>
           </div>
         </div>
