@@ -50,9 +50,8 @@
 .news{
   background-color: white;
 }
-.newsTitle{
-  margin: 20px 50px;
-  font-size: 40px;
+.newsTitle {
+  font-size: 26px;
   font-weight: 900;
 }
 .newsTitles{
