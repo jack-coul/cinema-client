@@ -4,13 +4,18 @@ import style from "./Cinema.module.css";
 import img from "../../../images/28fea504eb8034a8c957405dd134e2e5.png";
 import Place from "./Place";
 import ReservedPlace from "./ReservedPlace";
+import { useDispatch, useSelector } from "react-redux";
+import { addPlace } from "../../../redux/features/seans";
 
-const Sean = ({ time, hall, name, genre }) => {
+const Sean = ({ time, hall, name, genre, seanID }) => {
+  const dispatch = useDispatch()
+  const state = useSelector(state => state.seans.places)
   const placeArr = [];
-  for (let i = 0; i < 35; i++) {
+  for (let i = 0; i < hall.placesCount; i++) {
     placeArr.push(i + 1);
   }
-
+  
+  
   const [count, setCount] = useState(placeArr.length);
 
   const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
@@ -23,6 +28,13 @@ const Sean = ({ time, hall, name, genre }) => {
     setOpenCinemaPlace(false);
     setCount(placeArr.length);
   };
+  const handleAddPlace = (id)=>{
+    if(state!==null){
+
+      dispatch(addPlace(id))
+    }
+    console.log(state)
+  }
   return (
     <>
       {openCinemaPlace ? (
@@ -52,9 +64,13 @@ const Sean = ({ time, hall, name, genre }) => {
 
                 <div className={style.wrapPlaces}>
                   {placeArr.map((place) => {
-                    return (
-                      <Place place={place} count={count} setCount={setCount}  />
-                    );
+                      return(
+
+                        <Place place={place} count={count} setCount={setCount} />
+                      )
+                      
+                    
+                    
                   })}
                 </div>
               </div>
@@ -62,7 +78,7 @@ const Sean = ({ time, hall, name, genre }) => {
           </div>
           <div className={style.wrapButtonAndCards}>
             
-            <button className={style.bueBillets}>Купить</button>
+            <button onClick={(id)=> handleAddPlace(seanID)} className={style.bueBillets}>Купить</button>
           </div>
         </div>
       ) : (
@@ -84,7 +100,7 @@ const Sean = ({ time, hall, name, genre }) => {
               <span>•</span>
               <span>20$</span>
               <span>•</span>
-              <span></span>
+              <span>{hall.status}</span>
             </div>
           </div>
         </div>
