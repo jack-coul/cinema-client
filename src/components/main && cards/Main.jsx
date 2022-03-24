@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavigateBar from "../navigate/NavigateBar";
 import Cards from "./Cards/Cards";
 import styles from "./Main&&Cards.module.css";
@@ -13,10 +13,51 @@ import ContactsM from "./contactsM/ContactsM";
 import { useSelector } from "react-redux";
 
 const Main = () => {
+  // useEffect(() => {
+  //   disp
+  // })
+
   const token = useSelector((state) => state.user.token);
-  if (!token) {
+
+  console.log(token);
+  if (token) {
     return (
-      <>
+      <div>
+        <NavigateBar />
+
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className={styles.main}>
+                <Cards />
+                <MainNews />
+                <SoonContainer />
+              </div>
+            }
+          />
+          <Route path="/seances" element={<Seans />} />
+          <Route
+            path="/newspage"
+            element={
+              <>
+                <NewsPage />
+                <div className={styles.main}>
+                  <SoonContainer />
+                </div>
+              </>
+            }
+          />
+          <Route path="/signin" element={<Navigate to="/" replace />} />
+          <Route path="/signup" element={<Navigate to="/" replace />} />
+
+          <Route path="/contacts" element={<ContactsM />} />
+        </Routes>
+      </div>
+    );
+  } else {
+    return (
+      <div>
         <NavigateBar />
 
         <Routes>
@@ -47,43 +88,9 @@ const Main = () => {
 
           <Route path="/contacts" element={<ContactsM />} />
         </Routes>
-      </>
+      </div>
     );
   }
-  return ( 
-    <>
-      <NavigateBar />
-
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div className={styles.main}>
-              <Cards />
-              <MainNews />
-              <SoonContainer />
-            </div>
-          }
-        />
-        <Route path="/seances" element={<Seans />} />
-        <Route
-          path="/newspage"
-          element={
-            <>
-              <NewsPage />
-              <div className={styles.main}>
-                <SoonContainer />
-              </div>
-            </>
-          }
-        />
-        <Route path="/signin" element={<Navigate to="/" />} />
-        <Route path="/signup" element={<Navigate to="/" />} />
-
-        <Route path="/contacts" element={<ContactsM />} />
-      </Routes>
-    </>
-  );
 };
 
 export default Main;
