@@ -17,15 +17,10 @@
 .section2 {
   width: 700px;
 }
-.footer_title {
-  margin-left: 20px;
 
-  display: flex;
-}
 .link_item a {
   color: #f20361;
   display: block;
-  margin-left: 20px;
 }
 .feedback_btn {
   color: white;
