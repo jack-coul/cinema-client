@@ -5,7 +5,8 @@ import img from "../../../images/28fea504eb8034a8c957405dd134e2e5.png";
 import Place from "./Place";
 import ReservedPlace from "./ReservedPlace";
 import { useDispatch, useSelector } from "react-redux";
-import { addPlace } from "../../../redux/features/seans";
+import { addPlace, getSeans } from "../../../redux/features/seans";
+import { useEffect } from "react";
 
 const Sean = ({ time, hall, name, genre, seanID }) => {
   const dispatch = useDispatch()
@@ -23,7 +24,10 @@ const Sean = ({ time, hall, name, genre, seanID }) => {
   const hundleShowCinemaPlaces = () => {
     setOpenCinemaPlace(true);
   };
-
+  useEffect(()=>{
+    dispatch(getSeans(seanID))
+  },[dispatch])
+  
   const hundleCloseWindow = () => {
     setOpenCinemaPlace(false);
     setCount(placeArr.length);
@@ -33,7 +37,6 @@ const Sean = ({ time, hall, name, genre, seanID }) => {
 
       dispatch(addPlace(id))
     }
-    console.log(state)
   }
   return (
     <>
@@ -65,12 +68,9 @@ const Sean = ({ time, hall, name, genre, seanID }) => {
                 <div className={style.wrapPlaces}>
                   {placeArr.map((place) => {
                       return(
-
-                        <Place place={place} count={count} setCount={setCount} />
+                          
+                        <Place place={place} count={count} setCount={setCount}  />
                       )
-                      
-                    
-                    
                   })}
                 </div>
               </div>

@@ -42,7 +42,7 @@ const seans = (state = initialState, action) => {
       console.log(state.reservedPlace)
       return{
         ...state,
-        places: null,
+        
         reservedPlace: [
           ...state.reservedPlace,
           action.payload
