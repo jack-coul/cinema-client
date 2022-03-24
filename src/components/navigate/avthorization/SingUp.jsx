@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { registerUser } from "../../../redux/features/user";
 import styles from "../Navigate.module.css";
+import style from "./Signin.module.css";
 
 const SingUp = () => {
   const dispatch = useDispatch();
@@ -46,18 +47,21 @@ const SingUp = () => {
         <h2>Login</h2>
         <form>
           <div className="user-box">
+          <label>Username</label>
             <input value={name} onChange={(e)=> setName(e.target.value)} type="text" name="" required="" />
-            <label>Username</label>
+    
           </div>
           <div className="user-box">
+          <label>Email</label>
             <input value={login} onChange={(e)=> handleValidEmail(e)} type="text" name="" required="" />
-            <label>Email</label>
-            <span>{validLogin}</span>
+      
+            <div className={style.validLogins}>{validLogin}</div>
           </div>
           <div className="user-box">
+          <div className={styles.password}>Password</div>
             <input value={password} onChange={(e)=> handleValidPassword(e)} type="password" name="" required="" />
-            <label>Password</label>
-            <span>{validPassword}</span>
+    
+            <div  className={style.validLogins}>{validPassword}</div>
           </div>
           <div className="buttons">
             <Link onClick={()=> handleRegister(name,login,password)} to="#">
