@@ -1,0 +1,168 @@
+.description {
+    background-color: aliceblue;
+}
+
+.header {
+    font-size: .9375rem;
+    line-height: 48px;
+    background-color: #f2f2f5;
+    border-width: 1px 0;
+    border-color: #e3e9eb;
+    border-style: solid;
+    padding-left: 50px;
+}
+
+.aside {
+    width: 263px;
+    min-width: 263px;
+    margin-right: 30px;
+}
+
+.aside img {
+    width: 100%;
+}
+
+.rating {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.ratingItem {
+    width: 50%;
+}
+
+.ratingTitle {
+    font-size: .9375rem;
+    margin-bottom: 4px;
+    color: #666;
+}
+
+.ratingCount {
+    font-size: 1.5rem;
+    color: #000;
+}
+
+.main {
+    display: flex;
+    margin: 10px 50px;
+}
+
+.mainGenre {
+    font-size: .9375rem;
+    color: #666;
+}
+
+.mainTitle {
+    font-weight: 700;
+    font-size: 2.25rem;
+    margin: 6px 0 12px;
+    color: #000;
+}
+
+.mainCalendar {
+    display: flex;
+    border-radius: 25px;
+    background-color: #f2f2f5;
+    padding-left: 12px;
+}
+.mainCalendar button{
+    border-radius: 25px;
+    padding: 8px 12px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border: none;
+    
+}
+.mainToday {
+    background-color: red;
+    color: #fff;
+}
+.mainButton {
+   margin-left: 8px;
+   background-color: #fff;
+}
+.seans {
+    display: flex;
+    margin: 30px 0;
+}
+
+.seansContent {
+    width: 70px;
+    
+   
+}
+
+.seansBox {
+    background-color: red;
+    border-radius: 5px;
+}
+
+.seansTime {
+    padding: 8px 0;
+    text-align: center;
+    line-height: 22px;
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+.seansType {    
+    text-align: center;
+    padding: 2px;
+    margin: 0 1px 5px 1px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #fff;
+    line-height: 13px;
+    font-size: .6875rem;
+    color: #4c4c4f;
+}
+
+.seansHall {
+    text-align: center;
+    font-size: .6875rem;
+    line-height: 12px;
+    color: #4c4c4f;
+    margin-top: 3px;
+}
+.video {
+    font-size: 0;
+    display: inline-block;
+    position: relative;
+    width: 264px;
+    margin: 0 27px 27px 0;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.aboutMovie{
+    width: 100%;
+    display: flex;
+    padding: 26px 40px 26px 30px;
+    background-color: #f6f5f3;
+    border-radius: 8px;
+}
+.aboutFirst {
+    width: 25%;
+}
+
+.aboutSecond {
+    width: 75%;
+}
+
+.aboutInfo {
+    font-size: .9375rem;
+    line-height: 21px;
+}
+
+.aboutInfo:not(:first-child){
+    margin-top: 20px;
+}
+
+.footerDescription {
+    font-size: .9375rem;
+    line-height: 21px;
+    margin: 32px 0 0;
+    color: #000;
+}
