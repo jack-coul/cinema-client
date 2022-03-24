@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import style from "./Cinema.module.css";
 
 const Place = ({place, setCount, count}) => {
     const dispatch = useDispatch()
     const [classSelected, setClassSelected] = useState('')
     const [styleSelected, setStyleSelected] = useState(false)
-
+    
+   
     const hundleSelectPlace = () => {
         if(!styleSelected) {
             setStyleSelected(true)
@@ -31,7 +33,7 @@ const Place = ({place, setCount, count}) => {
 
     return (
         <>
-              <div onClick={hundleSelectPlace} className={styleSelected ? style.select : style.places }>
+              <div  onClick={hundleSelectPlace} className={styleSelected ? style.select : style.places }>
                   <div className={style.number}>{place}</div>
               </div>
         </>
