@@ -4,6 +4,7 @@ import films from "./features/films";
 import busy from "./features/busy";
 import seans from "./features/seans";
 import hall from "./features/hall";
+import news from "./features/news"
 const { default: thunk } = require("redux-thunk");
 
 const combineRouter = combineReducers({
@@ -11,7 +12,8 @@ const combineRouter = combineReducers({
   films,
   busy,
   seans,
-  hall
+  hall,
+  news
 });
 
 const store = createStore(combineRouter, applyMiddleware(thunk));
