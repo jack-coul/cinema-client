@@ -9,7 +9,7 @@ import Tomorrow from "./dateNavigation/Tomorrow";
 import { Link, Route, Routes, useLinkClickHandler } from "react-router-dom";
 import DateNav from "./dateNavigation/DateNav";
 
-const Navigate = () => {
+const NavigateBar = () => {
   return (
     <div className={styles.navigate}>
       <div className={styles.wrapNavigate}>
@@ -43,4 +43,4 @@ const Navigate = () => {
   );
 };
 
-export default Navigate;
+export default NavigateBar;

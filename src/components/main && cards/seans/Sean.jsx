@@ -6,11 +6,12 @@ import Place from "./Place";
 import ReservedPlace from "./ReservedPlace";
 
 const Sean = ({ time, hall, name, genre }) => {
+  console.log(hall);
   const placeArr = [];
   for (let i = 0; i < 35; i++) {
     placeArr.push(i + 1);
   }
-  console.log(hall);
+
   const [count, setCount] = useState(placeArr.length);
 
   const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
@@ -52,13 +53,9 @@ const Sean = ({ time, hall, name, genre }) => {
 
                 <div className={style.wrapPlaces}>
                   {placeArr.map((place) => {
+                    console.log(place);
                     return (
-                      <Place
-                        key={place}
-                        place={place}
-                        count={count}
-                        setCount={setCount}
-                      />
+                      <Place place={place} count={count} setCount={setCount} />
                     );
                   })}
                 </div>

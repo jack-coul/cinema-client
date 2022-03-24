@@ -115,6 +115,9 @@ span {
 .cinemaPlaseWrap {
   position: relative;
 }
-.wrapPrice {
-
+.cinemaName {
+  padding-top: 10px;
+}
+.ycinemaTime {
+  padding-bottom: 10px;
 }

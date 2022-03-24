@@ -59,8 +59,12 @@
 
 .number {
   position: absolute;
-  top: 31%;
-  left: 43%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  line-height: 50px;
   opacity: 0;
 }
 .places:hover .number {
@@ -69,10 +73,13 @@
 }
 .select:hover .number {
   opacity: 1;
-  font-size: 25px;
   color: rgb(255, 255, 255);
-  top: 18%;
-  left: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  line-height: 50px;
 }
 .places:hover {
   transition: 1s;
@@ -85,14 +92,17 @@
   flex-wrap: wrap;
 }
 .wrapButtonAndCards {
-  background-color: #FFF;
+  background-color: rgb(251, 251, 251);
+  border-bottom: 1px solid rgb(218, 218, 218);
+  border-left: 1px solid rgb(218, 218, 218);
+  border-right: 1px solid rgb(218, 218, 218);
 }
 .bueBillets {
   padding: 10px 30px;
   background-color: greenyellow;
   border-radius: 5px;
   border: 0;
-  color: #FFF;
+  color: #fff;
 }
 .wrapButtonAndCards {
   display: flex;
@@ -105,7 +115,8 @@
   align-items: center;
 }
 .reservs {
-  border: 1px solid rgb(207, 207, 207);
+  border: 1px solid black;
   padding: 3px;
   border-radius: 5px;
+  cursor: pointer;
 }
