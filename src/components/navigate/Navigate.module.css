@@ -17,6 +17,9 @@
   position: relative;
   color: black;
 }
+.password {
+  color: aqua;
+}
 a {
   text-decoration: none;
 }
