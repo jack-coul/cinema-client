@@ -10,8 +10,7 @@ const Sean = ({ time, hall, name, genre }) => {
   for (let i = 0; i < 35; i++) {
     placeArr.push(i + 1);
   }
-
-  console.log(name);
+  console.log(hall);
   const [count, setCount] = useState(placeArr.length);
 
   const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
@@ -91,7 +90,7 @@ const Sean = ({ time, hall, name, genre }) => {
               <span>•</span>
               <span>20$</span>
               <span>•</span>
-              <span>{}</span>
+              <span>{hall.status}</span>
             </div>
           </div>
         </div>
