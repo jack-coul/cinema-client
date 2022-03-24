@@ -53,9 +53,8 @@ const Sean = ({ time, hall, name, genre }) => {
 
                 <div className={style.wrapPlaces}>
                   {placeArr.map((place) => {
-                    console.log(place);
                     return (
-                      <Place place={place} count={count} setCount={setCount} />
+                      <Place place={place} count={count} setCount={setCount}  />
                     );
                   })}
                 </div>
@@ -63,8 +62,7 @@ const Sean = ({ time, hall, name, genre }) => {
             </div>
           </div>
           <div className={style.wrapButtonAndCards}>
-            <ReservedPlace />
-
+            
             <button className={style.bueBillets}>Купить</button>
           </div>
         </div>
@@ -87,7 +85,7 @@ const Sean = ({ time, hall, name, genre }) => {
               <span>•</span>
               <span>20$</span>
               <span>•</span>
-              <span>{hall.status}</span>
+              <span></span>
             </div>
           </div>
         </div>

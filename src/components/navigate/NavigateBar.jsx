@@ -8,8 +8,14 @@ import Today from "./dateNavigation/Today";
 import Tomorrow from "./dateNavigation/Tomorrow";
 import { Link, Route, Routes, useLinkClickHandler } from "react-router-dom";
 import DateNav from "./dateNavigation/DateNav";
+import { useDispatch, useSelector } from "react-redux";
 
 const NavigateBar = () => {
+  const dispatch = useDispatch()
+  const handleExit = ()=>{
+    dispatch({type: "Exit"})
+  }
+  const token = useSelector(state=> state.user.token)
   return (
     <div className={styles.navigate}>
       <div className={styles.wrapNavigate}>
@@ -20,13 +26,21 @@ const NavigateBar = () => {
           <News />
           <Contacts />
         </div>
-
+        {!token?
+        
         <div className={styles.singWrap}>
           <Link className={styles.singUp} to="/signup">
             Регистрация
           </Link>
           <Link to="/signin">вход</Link>
         </div>
+        :
+        <div className={styles.singWrap}>
+          <Link onClick={()=> handleExit()} className={styles.singUp} to="/signin">
+            выход
+          </Link>
+        </div>
+      }
       </div>
 
       {/* <SingIn />

@@ -46,15 +46,17 @@ const SingIn = () => {
         <h2>Login</h2>
         <form>
           <div className="user-box">
-            <input type="text" name="" required="" />
-            <label>Username</label>
+            <input value={login} onChange={(e)=> handleValidEmail(e)} type="text" name="" required="" />
+            <label>Email</label>
+            <span>{validLogin}</span>
           </div>
           <div className="user-box">
-            <input type="password" name="" required="" />
+            <input value={password} onChange={(e)=> handleValidPassword(e)} type="password" name="" required="" />
             <label>Password</label>
+            <span>{validPassword}</span>
           </div>
           <div className="buttons">
-            <Link to="#">
+            <Link onClick={()=> handleLogin(login,password)} to="/">
               <span></span>
               <span></span>
               <span></span>
