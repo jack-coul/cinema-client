@@ -6,11 +6,50 @@ const inintialState = {
 const user = (state = inintialState, action) => {
   switch (action.type) {
     case "Exit":
-      localStorage.removeItem("token")
-      return{
+      localStorage.removeItem("token");
+      return {
         ...state,
-        token: null
-      }
+        token: null,
+      };
+    case "/user/register/pending":
+      return {
+        ...state,
+        loadUser: true,
+        error: null,
+      };
+    case "/user/register/fulfilled":
+      return {
+        ...state,
+        loadUser: false,
+        login: action.payload.name,
+      };
+    case "/user/register/rejected":
+      console.log(action.payload);
+      return {
+        ...state,
+        loadUser: false,
+        error: action.error,
+      };
+    case "user/login/pending":
+      return {
+        ...state,
+        loadUser: true,
+        error: null,
+      };
+    case "/user/login/fulfilled":
+      console.log(action.payload);
+      return {
+        ...state,
+        loadUser: false,
+        token: action.payload,
+      };
+    case "/user/login/rejected":
+      console.log(2);
+      return {
+        ...state,
+        loadUser: false,
+        error: action.error,
+      };
     default:
       return {
         ...state,
@@ -24,17 +63,25 @@ export const registerUser = (name, login, password) => {
   return async (dispatch) => {
     dispatch({ type: "/user/register/pending" });
     try {
-      const user = await fetch("http://localhost:4000/user/sign", {
+      const res = await fetch("http://localhost:4000/user/sign", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
         body: JSON.stringify({ name, login, password }),
       });
-      const userRes = await user.json();
-      dispatch({ type: "/user/register/fullfilled", payload: userRes });
+      const user = await res.json();
+      if (user.user) {
+        dispatch({ type: "/user/register/fullfilled", payload: user.user });
+      } else {
+        console.log(1);
+        dispatch({
+          type: "/user/register/rejected",
+          error: "Такой email уже существует",
+        });
+      }
     } catch (err) {
-      dispatch({ type: "/user/register/fullfilled", error: err.toString() });
+      dispatch({ type: "/user/register/rejected", error: err.toString() });
     }
   };
 };
@@ -51,8 +98,10 @@ export const loginUser = (login, password) => {
       });
 
       const token = await res.json();
-      dispatch({ type: "/user/login/fullfilled", payload: token });
-      localStorage.setItem("token", token);
+      if (token.token) {
+        dispatch({ type: "/user/login/fulfilled", payload: token });
+        localStorage.setItem("token", token);
+      }
     } catch (err) {
       dispatch({ type: "/user/login/rejected", error: err.toString() });
     }

@@ -47,6 +47,7 @@ const SingIn = () => {
         <h2>Login</h2>
         <form>
           <div className="user-box">
+
             <label>Email</label>
             <input
               value={login}
@@ -59,6 +60,7 @@ const SingIn = () => {
             <div className={style.validLogins}>{validLogin}</div>
           </div>
           <div className="user-box">
+
             <label>Password</label>
             <input
               value={password}
@@ -71,12 +73,15 @@ const SingIn = () => {
             <div className={style.validLogins}>{validPassword}</div>
           </div>
           <div className="buttons">
-            <Link onClick={() => handleLogin(login, password)} to="/">
+
+            <Link onClick={() => handleLogin(login, password)} to="#">
+
               <span></span>
               <span></span>
               <span></span>
               <span></span>Sign in
             </Link>
+
             <Link to="/signup">
               <span></span>
               <span></span>
