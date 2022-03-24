@@ -6,7 +6,7 @@ import CardTomorrow from "./CardTomorrow";
 
 const Cards = () => {
   const { films, loadingFilms } = useSelector((state) => state.films);
-  console.log(films);
+
   return (
     <div className={styles.cards}>
       {/* {films.map((film) => {

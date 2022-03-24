@@ -4,9 +4,7 @@ import styles from "./Navigate.module.css";
 import Sessions from "./Sessions";
 import News from "./News";
 import Contacts from "./Contacts";
-import Today from "./dateNavigation/Today";
-import Tomorrow from "./dateNavigation/Tomorrow";
-import { Link, Route, Routes, useLinkClickHandler } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import DateNav from "./dateNavigation/DateNav";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -42,9 +40,6 @@ const NavigateBar = () => {
         </div>
       }
       </div>
-
-      {/* <SingIn />
-        <SingUp />  ss*/}
 
       <div className={styles.navigateFromDates}>
         <div className={styles.navigateFromDatesWrap}>
