@@ -94,6 +94,15 @@
   padding: 15px 30px;
   display: flex;
   flex-wrap: wrap;
+  
+}
+.blockPlaces{
+  width: 700px;
+  margin: auto;
+  padding: 15px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgba(238, 50, 50, 0.794);
 }
 
 .wrapButtonAndCards {
