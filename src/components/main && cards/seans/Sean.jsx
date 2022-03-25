@@ -31,10 +31,13 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
 
   const hundleShowCinemaPlaces = () => {
     setOpenCinemaPlace(true);
+    document.body.style.overflow = "hidden";
   };
 
   const hundleCloseWindow = () => {
     setOpenCinemaPlace(false);
+    document.body.style.overflow = "";
+
     setCount(placeArr.length);
     dispatch({ type: "clearPlaces" });
   };
