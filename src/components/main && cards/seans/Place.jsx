@@ -7,6 +7,7 @@ const Place = ({ place, seans, state, setCount, count, block, setBlock }) => {
   const dispatch = useDispatch();
   const [classSelected, setClassSelected] = useState("");
   const [styleSelected, setStyleSelected] = useState(false);
+  const [reserve, setReserve ] = useState(false)
 
   const places = useSelector((state)=> state.seans.places)
 
@@ -28,11 +29,14 @@ const Place = ({ place, seans, state, setCount, count, block, setBlock }) => {
             setClassSelected(style.places);
             setCount(count - 1);
             dispatch({ type: "addPlace", payload: place });
+            setReserve(true)
           } else {
             setStyleSelected(false);
             setClassSelected(style.select);
             setCount(count + 1);
             dispatch({ type: "deletePlace", payload: place });
+            setReserve(false)
+
           }
         
       }
@@ -43,11 +47,12 @@ const Place = ({ place, seans, state, setCount, count, block, setBlock }) => {
 
   return (
     <>
-      <div
+      <div type="btn"
         onClick={hundleSelectPlace}
-        className={oneSeans.place && onePlace ? style.select : style.places}
+        className={oneSeans.place && onePlace ? style.reserved  : (!reserve?style.places: style.select) }
+        disabled={onePlace}
       >
-        <div className={style.number}>{place}</div>
+        <div className={oneSeans.place && onePlace ?style.active:style.number}>{oneSeans.place && onePlace? "x" :place} </div>
       </div>
     </>
   );
