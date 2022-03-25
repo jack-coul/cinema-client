@@ -43,6 +43,8 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
   const handleAddPlace = (id) => {
     if (token) {
       dispatch(addPlace(id));
+      dispatch({type: "clearPlaces"})
+
     }
   };
   return (
