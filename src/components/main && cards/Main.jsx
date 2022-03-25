@@ -11,11 +11,10 @@ import SingIn from "../navigate/avthorization/SingIn";
 import SingUp from "../navigate/avthorization/SingUp";
 import ContactsM from "./contactsM/ContactsM";
 import { useSelector } from "react-redux";
+import MovieDescription from "./description/MovieDescription";
 
 const Main = () => {
-  // useEffect(() => {
-  //   disp
-  // })
+  
 
   const token = useSelector((state) => state.user.token);
 
@@ -42,6 +41,17 @@ const Main = () => {
             element={
               <>
                 <NewsPage />
+                <div className={styles.main}>
+                  <SoonContainer />
+                </div>
+              </>
+            }
+          />
+          <Route
+            path="/filmdiscription"
+            element={
+              <>
+                <MovieDescription/>
                 <div className={styles.main}>
                   <SoonContainer />
                 </div>

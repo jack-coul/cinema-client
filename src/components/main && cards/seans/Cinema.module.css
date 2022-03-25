@@ -118,6 +118,10 @@
   padding: 3px;
   border-radius: 5px;
   cursor: pointer;
+  width: 100px;
+}
+.reservePlaces{
+  display: flex;
 }
 .bueBillets {
   margin-left: 785px;

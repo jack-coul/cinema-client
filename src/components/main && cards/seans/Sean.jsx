@@ -3,11 +3,11 @@ import styles from "./Seans.module.css";
 import style from "./Cinema.module.css";
 import img from "../../../images/28fea504eb8034a8c957405dd134e2e5.png";
 import Place from "./Place";
-// import ReservedPlace from "./ReservedPlace";
 import { useDispatch, useSelector } from "react-redux";
 import { addPlace, getSeans } from "../../../redux/features/seans";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import ReservedPlace from "./ReservedPlace";
 
 const Sean = ({ time, hall, name, genre, seanID }) => {
   const dispatch = useDispatch();
@@ -18,6 +18,7 @@ const Sean = ({ time, hall, name, genre, seanID }) => {
 
   const seans = useSelector((state) => state.seans.seans);
   const token = useSelector((state) => state.user.token);
+  const places = useSelector((state)=> state.seans.places)
   const [count, setCount] = useState(placeArr.length);
 
   const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
@@ -32,6 +33,7 @@ const Sean = ({ time, hall, name, genre, seanID }) => {
   const hundleCloseWindow = () => {
     setOpenCinemaPlace(false);
     setCount(placeArr.length);
+    dispatch({type: "clearPlaces"})
   };
   const handleAddPlace = (id) => {
     if (token) {
@@ -82,6 +84,15 @@ const Sean = ({ time, hall, name, genre, seanID }) => {
             </div>
           </div>
           <div className={style.wrapButtonAndCards}>
+            <div className={style.reservePlaces}>
+
+            {places.map((place)=>{
+              return(
+                <ReservedPlace place = {place}/>
+
+              )
+            })}
+            </div>
             <Link
               onClick={() => handleAddPlace(seanID)}
               className={style.bueBillets}

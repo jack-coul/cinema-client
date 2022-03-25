@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Seans from "../seans/Seans";
 import styles from "./Cards.module.css";
 
@@ -9,6 +10,8 @@ const Card = () => {
     setSeanesModal(true);
   };
   return (
+    <Link to='/filmdiscription'>
+    
     <div className={styles.card}>
       <div className={styles.backroundImgWrap}>
         <div className={styles.cardImg}>
@@ -27,6 +30,7 @@ const Card = () => {
       </div>
       {seanesModal && <Seans />}
     </div>
+    </Link>
   );
 };
 

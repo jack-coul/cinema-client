@@ -53,6 +53,11 @@ const seans = (state = initialState, action) => {
         ...state,
         places: [...state.places.filter((place) => place !== action.payload)],
       };
+    case "clearPlaces":
+      return{
+        ...state,
+        places: []
+      }
     default:
       return state;
   }
