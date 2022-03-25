@@ -70,6 +70,7 @@ export const getAllFilms = () => {
     try {
       const res = await fetch("http://localhost:4000/films");
       const films = await res.json();
+      console.log(films)
       dispatch({ type: "get/films/fulfilled", payload: films });
     } catch (error) {
       dispatch({ type: "get/films/rejected", error });

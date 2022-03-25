@@ -10,11 +10,15 @@ import NewsPage from "./news/NewsPage";
 import SingIn from "../navigate/avthorization/SingIn";
 import SingUp from "../navigate/avthorization/SingUp";
 import ContactsM from "./contactsM/ContactsM";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MovieDescription from "./description/MovieDescription";
+import { getAllFilms } from "../../redux/features/films";
 
 const Main = () => {
-  
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(getAllFilms())
+  },[dispatch])
 
   const token = useSelector((state) => state.user.token);
 
@@ -48,7 +52,7 @@ const Main = () => {
             }
           />
           <Route
-            path="/filmdiscription"
+            path="/filmdiscription/:id"
             element={
               <>
                 <MovieDescription/>
