@@ -1,0 +1,51 @@
+
+.singWrap svg {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    font-size: 50px;
+    color: #FFF;
+
+
+}
+.www {
+    background-size: cover;
+    background-image: url("https://img1.goodfon.ru/wallpaper/nbig/0/d0/pervyy-mstitel-captain-3292.jpg")
+}
+.openChildModal {
+    font-size: 24px;
+    position: absolute;
+    bottom: 10px;
+    color: #FFF;
+    font-weight: 600;
+    box-shadow: 1px 1px 10px rgb(255, 255, 255);
+    text-shadow: 1px 1px 10px rgb(255, 255, 255);
+}
+.wrapProfile img {
+    width: 150px;
+}
+.wrapProfile {
+    display: flex;
+}
+.infoWrap span {
+    font-size: 18px;
+    color: rgb(251, 251, 251);
+    
+}
+.infoWrap .userName {
+    color: rgb(251, 251, 251);
+    font-size: 26px;
+    text-shadow: 1px 1px 10px rgb(255, 255, 255);
+}
+.infoWrap .userEmail {
+    font-size: 26px;
+    color: rgb(251, 251, 251);
+    text-shadow: 1px 1px 10px rgb(255, 255, 255);
+}
+.litleModal {
+    box-shadow: 10px 10px 100px rgb(202, 202, 202);
+    background-size: 150px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("https://cdn-icons-png.flaticon.com/512/1705/1705786.png");
+}

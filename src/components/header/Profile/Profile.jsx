@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import styles from "../../navigate/Navigate.module.css";
 import LogoutIcon from "@mui/icons-material/Logout";
+import cssc from "./Profile.module.css"
 
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -20,8 +21,9 @@ const style = {
   boxShadow: 24,
   borderRadius: 5,
   pt: 2,
-  px: 4,
-  pb: 3,
+  px: 2,
+  pb: 2,
+   
 };
 
 const ChildModal = () => {
@@ -35,7 +37,7 @@ const ChildModal = () => {
 
   return (
     <React.Fragment>
-      <Button onClick={handleOpen}>Open Child Modal</Button>
+      <Button className={cssc.openChildModal} onClick={handleOpen}>Open Child Modal</Button>
       <Modal
         hideBackdrop
         open={open}
@@ -43,12 +45,12 @@ const ChildModal = () => {
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
       >
-        <Box sx={{ ...style, width: 300 }}>
+        <Box className={cssc.litleModal} sx={{ ...style, width: 300 }}>
           <h2 id="child-modal-title">Text in a child modal</h2>
           <p id="child-modal-description">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
           </p>
-          <Button onClick={handleClose}>Close Child Modal</Button>
+          <Button className={cssc.closeWindow} onClick={handleClose}>Close Child Modal</Button>
         </Box>
       </Modal>
     </React.Fragment>
@@ -78,13 +80,18 @@ const Profile = () => {
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style, width: 600, height: 400 }}>
-          <h2 id="parent-modal-title">Text in a modal</h2>
-          <p id="parent-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </p>
+        <Box sx={{ ...style, width: 500, height: 300, }} className={cssc.www}>
+          <div className={cssc.wrapProfile}>
+            <div className={cssc.imgWrap}>
+              <img src="https://cdn-icons-png.flaticon.com/512/1538/1538462.png" alt="" />
+            </div>
+            <div className={cssc.infoWrap}>
+              <div className={cssc.userName}><span>user:</span> Ibra</div>
+              <div className={cssc.userEmail}><span>email:</span>ibra@gmail.com</div>
+            </div>
+          </div>
           <ChildModal />
-          <div className={styles.singWrap}>
+          <div className={cssc.singWrap}>
             <Link
               onClick={() => handleExit()}
               className={styles.singUp}

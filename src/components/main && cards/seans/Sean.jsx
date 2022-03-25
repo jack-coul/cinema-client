@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import ReservedPlace from "./ReservedPlace";
 
 const Sean = ({ time, hall, name, genre, seanID, sean }) => {
+  const [block, setBlock] = useState(false);
   const seans = useSelector((state) => state.seans.seans);
   const dispatch = useDispatch();
   const placeArr = [];
@@ -73,7 +74,7 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
                   <img src={img} alt="" />
                 </div>
 
-                <div className={style.wrapPlaces}>
+                <div className={!block ? style.wrapPlaces : style.blockPlaces}>
                   {placeArr.map((place) => {
                     return (
                       <Place
@@ -82,6 +83,8 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
                         seans={seans}
                         count={count}
                         setCount={setCount}
+                        setBlock={setBlock}
+                        block={block}
                       />
                     );
                   })}
@@ -92,7 +95,7 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
           <div className={style.wrapButtonAndCards}>
             <div className={style.reservePlaces}>
               {places.map((place) => {
-                return <ReservedPlace place={place} />;
+                return <ReservedPlace setBlock={setBlock} place={place} />;
               })}
             </div>
             <Link
