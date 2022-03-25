@@ -3,48 +3,37 @@ import styles from "./Seans.module.css";
 import style from "./Cinema.module.css";
 import img from "../../../images/28fea504eb8034a8c957405dd134e2e5.png";
 import Place from "./Place";
+import ReservedPlace from "./ReservedPlace";
 import { useDispatch, useSelector } from "react-redux";
 import { addPlace, getSeans } from "../../../redux/features/seans";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import ReservedPlace from "./ReservedPlace";
 
-const Sean = ({ time, hall, name, genre, seanID, sean }) => {
-  
-  const seans = useSelector((state) => state.seans.seans);
+const Sean = ({ time, hall, name, genre, seanID }) => {
   const dispatch = useDispatch();
+  const state = useSelector((state) => state.seans.places);
   const placeArr = [];
-  
-  if(hall._id===sean.hall._id){
-    
-    for (let i = 0; i < hall.placesCount; i++) {
-      placeArr.push(i + 1);
-    }
+  for (let i = 0; i < hall.placesCount; i++) {
+    placeArr.push(i + 1);
   }
 
-  const token = useSelector((state) => state.user.token);
-  const places = useSelector((state)=> state.seans.places)
   const [count, setCount] = useState(placeArr.length);
 
   const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
-  useEffect(() => {
-    dispatch(getSeans(seanID));
-  }, [dispatch, seanID]);
 
   const hundleShowCinemaPlaces = () => {
     setOpenCinemaPlace(true);
   };
+  useEffeczt(() => {
+    dispatch(getSeans(seanID));
+  }, [dispatch, seanID]);
 
   const hundleCloseWindow = () => {
     setOpenCinemaPlace(false);
     setCount(placeArr.length);
-    dispatch({type: "clearPlaces"})
   };
   const handleAddPlace = (id) => {
-    if (token) {
+    if (state !== null) {
       dispatch(addPlace(id));
-      dispatch({type: "clearPlaces"})
-
     }
   };
   return (
@@ -68,7 +57,7 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
                     <div className={style.greyBlock}></div>
                     <div className={style.priceAndPlace}>Занято</div>
                   </div>
-                  <div className={style.placeLeft}>Осталось {count- sean.place.length} мест</div>
+                  <div className={style.placeLeft}>Осталось {count} мест</div>
                 </div>
                 <div className={style.display}>
                   <img src={img} alt="" />
@@ -77,13 +66,7 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
                 <div className={style.wrapPlaces}>
                   {placeArr.map((place) => {
                     return (
-                      <Place
-                        place={place}
-                        state={seanID}
-                        seans={seans}
-                        count={count}
-                        setCount={setCount}
-                      />
+                      <Place place={place} count={count} setCount={setCount} />
                     );
                   })}
                 </div>
@@ -91,22 +74,12 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
             </div>
           </div>
           <div className={style.wrapButtonAndCards}>
-            <div className={style.reservePlaces}>
-
-            {places.map((place)=>{
-              return(
-                <ReservedPlace place = {place}/>
-
-              )
-            })}
-            </div>
-            <Link
-              onClick={() => handleAddPlace(seanID)}
+            <button
+              onClick={(id) => handleAddPlace(seanID)}
               className={style.bueBillets}
-              to={token ? "#" : "/signin"}
             >
               Купить
-            </Link>
+            </button>
           </div>
         </div>
       ) : (

@@ -12,8 +12,6 @@ const Cards = () => {
       {films.map((film) => {
         return <Card film={film} />;
       })}
-      
-   
     </div>
   );
 };
