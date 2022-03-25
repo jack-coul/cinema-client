@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./News.module.css";
 import arrowRight from "../../../images/right-arrow.png";
+import { Link } from "react-router-dom";
 
 const MainNews = () => {
   return (
@@ -10,7 +11,7 @@ const MainNews = () => {
           <h1>Новости</h1>
         </div>
         <div className={styles.showAllNews}>
-          показать все <img src={arrowRight} alt="" />
+          <Link to='/newspage'>показать все</Link> <img src={arrowRight} alt="" />
         </div>
       </div>
       <div className={styles.newsCardWrap}>
