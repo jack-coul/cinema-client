@@ -48,7 +48,7 @@ const SingUp = () => {
         <h2>Login</h2>
         <form>
           <div className="user-box">
-
+            <label>Username</label>
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -56,9 +56,9 @@ const SingUp = () => {
               name=""
               required=""
             />
-            <label>Username</label>
           </div>
           <div className="user-box">
+            <label>Email</label>
             <input
               value={login}
               onChange={(e) => handleValidEmail(e)}
@@ -66,10 +66,11 @@ const SingUp = () => {
               name=""
               required=""
             />
-            <label>Email</label>
-            <span>{validLogin}</span>
+
+            <div className={style.validLogins}>{validLogin}</div>
           </div>
           <div className="user-box">
+            <label>Password</label>
             <input
               value={password}
               onChange={(e) => handleValidPassword(e)}
@@ -77,10 +78,9 @@ const SingUp = () => {
               name=""
               required=""
             />
-            <label>Password</label>
-            <span>{validPassword}</span>
-            <span>{searchEmail && searchEmail}</span>
 
+            <div className={style.validLogins}>{validPassword}</div>
+            <span>{searchEmail && searchEmail}</span>
           </div>
           <div className="buttons">
             <Link onClick={() => handleRegister(name, login, password)} to="#">
