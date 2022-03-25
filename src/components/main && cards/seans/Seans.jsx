@@ -35,6 +35,7 @@ const Seans = () => {
       {seans.map((sean) => {
         return (
           <Sean
+          sean={sean}
             seanID={sean._id}
             name={sean.film.name}
             key={sean._id}

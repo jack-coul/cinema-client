@@ -9,14 +9,19 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReservedPlace from "./ReservedPlace";
 
-const Sean = ({ time, hall, name, genre, seanID }) => {
+const Sean = ({ time, hall, name, genre, seanID, sean }) => {
+  
+  const seans = useSelector((state) => state.seans.seans);
   const dispatch = useDispatch();
   const placeArr = [];
-  for (let i = 0; i < hall.placesCount; i++) {
-    placeArr.push(i + 1);
+  
+  if(hall._id===sean.hall._id){
+    
+    for (let i = 0; i < hall.placesCount; i++) {
+      placeArr.push(i + 1);
+    }
   }
 
-  const seans = useSelector((state) => state.seans.seans);
   const token = useSelector((state) => state.user.token);
   const places = useSelector((state)=> state.seans.places)
   const [count, setCount] = useState(placeArr.length);
@@ -61,7 +66,7 @@ const Sean = ({ time, hall, name, genre, seanID }) => {
                     <div className={style.greyBlock}></div>
                     <div className={style.priceAndPlace}>Занято</div>
                   </div>
-                  <div className={style.placeLeft}>Осталось {count} мест</div>
+                  <div className={style.placeLeft}>Осталось {count- sean.place.length} мест</div>
                 </div>
                 <div className={style.display}>
                   <img src={img} alt="" />
