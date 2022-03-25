@@ -8,8 +8,9 @@
   background-color: greenyellow;
   width: 12px;
   height: 12px;
+
   border-radius: 3px;
-  margin-right: 5px;
+  margin-left: 20px;
 }
 .greyBlock {
   background-color: rgb(179, 179, 179);
@@ -29,6 +30,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.price {
+  margin-left: 3px;
 }
 .display {
   margin-top: 10px;
@@ -91,12 +95,27 @@
   display: flex;
   flex-wrap: wrap;
 }
+
 .wrapButtonAndCards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 72px;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
   background-color: rgb(251, 251, 251);
+  padding-left: 30px;
+  padding-right: 12px;
+  padding-bottom: 9px;
   border-bottom: 1px solid rgb(218, 218, 218);
   border-left: 1px solid rgb(218, 218, 218);
   border-right: 1px solid rgb(218, 218, 218);
 }
+
 .bueBillets {
   padding: 10px 30px;
   background-color: greenyellow;
@@ -104,45 +123,66 @@
   border: 0;
   color: #fff;
 }
-.wrapButtonAndCards {
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
+
+.wrapButtonAndCards a {
+  display: block;
 }
 .wrapPrice {
   display: flex;
   align-items: center;
 }
 .reservs {
-  border: 1px solid black;
-  padding: 3px;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100px;
+  position: relative;
+  margin-left: -16px;
+  width: 133px;
+  background-color: #fff;
+  border: 1px solid rgba(120, 120, 128, 0.2);
+  border-radius: 8px 8px 0 0;
+  padding: 8px 32px 8px 12px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  height: 65px;
+  -webkit-transform: translateY(8px);
+  transform: translateY(8px);
+  -webkit-transition: 0.2s transform ease-in-out;
+  transition: 0.2s transform ease-in-out;
+  white-space: nowrap;
 }
-.reservePlaces{
+.reservs:hover {
+  bottom: 30px;
+  animation-duration: 0.75s;
+}
+
+.reservePlaces {
   display: flex;
 }
+
 .bueBillets {
-  margin-left: 785px;
-  color: rgb(219, 219, 219);
+  color: rgb(24, 24, 24);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: 1s;
-
+  margin-top: 10px;
+  margin-right: 5px;
 }
 .bueBillets:hover {
-  transition: 1s;
-  color: rgb(129, 129, 129);
-  font-size: 26px;
-  font-weight: 600;
+background-color: blue;
+color: #fff;
 }
-/* .bueBillets:after {
-  margin-left: 785px;
-  color: rgb(219, 219, 219);
-  font-size: 14px;
-  font-weight: 600;
+.deleteReserve {
   cursor: pointer;
-
-} */
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  font-size: 16px;
+  color: #f20361;
+}
+.deleteReserve {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  font-size: 16px;
+  color: #f20361;
+}
