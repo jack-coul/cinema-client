@@ -8,11 +8,31 @@ import { addPlace, getSeans } from "../../../redux/features/seans";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReservedPlace from "./ReservedPlace";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
 
 const Sean = ({ time, hall, name, genre, seanID, sean }) => {
+  const [block, setBlock] = useState(false);
   const seans = useSelector((state) => state.seans.seans);
   const dispatch = useDispatch();
   const placeArr = [];
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
 
   if (hall._id === sean.hall._id) {
     for (let i = 0; i < hall.placesCount; i++) {
@@ -31,13 +51,10 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
 
   const hundleShowCinemaPlaces = () => {
     setOpenCinemaPlace(true);
-    document.body.style.overflow = "hidden";
   };
 
   const hundleCloseWindow = () => {
     setOpenCinemaPlace(false);
-    document.body.style.overflow = "";
-
     setCount(placeArr.length);
     dispatch({ type: "clearPlaces" });
   };
@@ -48,69 +65,23 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
     }
   };
   return (
-    <>
-      {openCinemaPlace ? (
-        <div className={styles.cinemaPlaseWrap}>
-          <div onClick={hundleCloseWindow} className={style.closeButton}>
-            x
-          </div>
-          <div className={styles.wrapWrap}>
-            <div className={styles.cinemaInfoWrap}>
-              <div className={styles.cinemaName}>{name}</div>
-              <div className={styles.ycinemaTime}>{time}</div>
-            </div>
-            <div className={styles.wrapCinemaPlases}>
-              <div className={styles.wrapInfo}>
-                <div className={style.priceContainer}>
-                  <div className={style.priceWrap}>
-                    <div className={style.greenBlock}></div>
-                    <div className={style.priceAndPlace}>200 $</div>
-                    <div className={style.greyBlock}></div>
-                    <div className={style.priceAndPlace}>Занято</div>
-                  </div>
-                  <div className={style.placeLeft}>
-                    Осталось {count - sean.place.length} мест
-                  </div>
-                </div>
-                <div className={style.display}>
-                  <img src={img} alt="" />
-                </div>
-
-                <div className={style.wrapPlaces}>
-                  {placeArr.map((place) => {
-                    return (
-                      <Place
-                        place={place}
-                        state={seanID}
-                        seans={seans}
-                        count={count}
-                        setCount={setCount}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={style.wrapButtonAndCards}>
-            <div className={style.reservePlaces}>
-              {places.map((place) => {
-                return <ReservedPlace place={place} />;
-              })}
-            </div>
-            <Link
-              onClick={() => handleAddPlace(seanID)}
-              className={style.bueBillets}
-              to={token ? "#" : "/signin"}
-            >
-              Купить
-            </Link>
-          </div>
-        </div>
-      ) : (
-        ""
-      )}
-      <div className={styles.seansMap}>
+    <div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+        </Box>
+      </Modal>
+      <div className={styles.seansMap} onClick={handleOpen}>
         <div onClick={hundleShowCinemaPlaces} className={styles.seansList}>
           <div className={styles.fortimeButton}>
             <button className={styles.timeButton}>{time}</button>
@@ -131,7 +102,7 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
