@@ -2,6 +2,7 @@ const initialState = {
   busy: [],
   error: null,
   user: "",
+  tickets: [],
 };
 
 const busy = (state = initialState, action) => {
@@ -42,6 +43,23 @@ const busy = (state = initialState, action) => {
         loadingBusy: false,
         error: action.payload,
       };
+    case "get/userTickets/pending":
+      return {
+        ...state,
+        loadTickets: true,
+      };
+    case "get/userTickets/fulfilled":
+      return {
+        ...state,
+        loadTickets: false,
+        tickets: [...action.payload],
+      };
+    case "get/userTickets/rejected":
+      return {
+        ...state,
+        loadTickets: false,
+        error: action.error,
+      };
     default:
       return state;
   }
@@ -63,10 +81,10 @@ export const getBusy = () => {
 export const toBookThePlace = (placesList, id) => {
   return async (dispatch, getState) => {
     const state = getState();
-    const token = state.application.token;
+    const token = state.user.token;
     dispatch({ type: "toBook/fetch/pending" });
     try {
-      const res = await fetch("http://localhost:4000/place", {
+      const res = await fetch("http://localhost:4000/busy", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -75,6 +93,7 @@ export const toBookThePlace = (placesList, id) => {
         body: JSON.stringify({ placesList, id }),
       });
       const place = await res.json();
+      console.log(place);
       dispatch({ type: "toBook/fetch/fulfilled" });
     } catch (error) {
       dispatch({ type: "toBook/fetch/rejected", error });
@@ -85,10 +104,13 @@ export const toBookThePlace = (placesList, id) => {
 export const getUserBusy = () => {
   return async (dispatch, getState) => {
     const state = getState();
+
     const token = state.user.token;
+    console.log(token);
     dispatch({ type: "get/userTickets/pending" });
     try {
       const res = await fetch("http://localhost:4000/user/busy", {
+        method: "GET",
         headers: {
           "Content-type": "application/json",
           Authorization: `Bearer ${token}`,

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
@@ -27,47 +27,28 @@ const style = {
   pb: 2,
 };
 
-const ChildModal = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  return (
-    <React.Fragment>
-      <Button className={cssc.openChildModal} onClick={handleOpen}>
-        Open Child Modal
-      </Button>
-      <Modal
-        hideBackdrop
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="child-modal-title"
-        aria-describedby="child-modal-description"
-      >
-        <Box className={cssc.litleModal} sx={{ ...style, width: 300 }}>
-          <h2 id="child-modal-title">Text in a child modal</h2>
-          <p id="child-modal-description">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          </p>
-          <Button className={cssc.closeWindow} onClick={handleClose}>
-            Close Child Modal
-          </Button>
-        </Box>
-      </Modal>
-    </React.Fragment>
-  );
-};
-
 const Profile = () => {
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getUserBusy());
-  });
+  }, [dispatch]);
+  const tickets = useSelector((state) => state.busy.tickets);
+
+  const AllListFilms = tickets.map((ticket) => ticket.seans.film.name);
+  console.log(AllListFilms);
+  const unique = (filmsList) => {
+    let result = [];
+
+    for (let film of filmsList) {
+      if (!result.includes(film)) {
+        result.push(film);
+      }
+    }
+
+    return result;
+  };
+  console.log(unique(AllListFilms));
+  const films = unique(AllListFilms);
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
@@ -105,9 +86,22 @@ const Profile = () => {
               <div className={cssc.userEmail}>
                 <span>email:</span>ibra@gmail.com
               </div>
+              <div>ваши билеты</div>
+              <div>
+                {films.map((film) => (
+                  <div>
+                    <ChildModal
+                      film={film}
+                      tickets={tickets.filter(
+                        (ticket) => ticket.seans.film.name === film
+                      )}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-          <ChildModal />
+
           <div className={cssc.singWrap}>
             <Link
               onClick={() => handleExit()}
@@ -120,6 +114,54 @@ const Profile = () => {
         </Box>
       </Modal>
     </div>
+  );
+};
+
+const ChildModal = ({ film, tickets }) => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const places = tickets.map((ticket) => {
+    if (ticket.seans.film.name === film) {
+      return ticket.place;
+    }
+  });
+  const startSeans = tickets.find((ticket) => ticket.seans.film.name === film);
+
+  return (
+    <React.Fragment>
+      <Button onClick={handleOpen}>{film}</Button>
+      <Modal
+        hideBackdrop
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="child-modal-title"
+        aria-describedby="child-modal-description"
+      >
+        <Box className={cssc.litleModal} sx={{ ...style, width: 300 }}>
+          <h2 id="child-modal-title">
+            <span>Фильм: </span>
+            {film}
+          </h2>
+          <p id="child-modal-description">
+            <span>Количество билетов: </span> {tickets.length}
+          </p>
+          <p>
+            Места: <span>{places.join(", ")}</span>
+          </p>
+          <p>
+            Начало сеанса: <span>{startSeans.seans.time}</span>
+          </p>
+          <Button className={cssc.closeWindow} onClick={handleClose}>
+            Close Child Modal
+          </Button>
+        </Box>
+      </Modal>
+    </React.Fragment>
   );
 };
 
