@@ -1,14 +1,16 @@
-import * as React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import styles from "../../navigate/Navigate.module.css";
 import LogoutIcon from "@mui/icons-material/Logout";
-import cssc from "./Profile.module.css"
+import cssc from "./Profile.module.css";
 
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+
+import { getUserBusy } from "../../../redux/features/busy";
 
 const style = {
   position: "absolute",
@@ -23,7 +25,6 @@ const style = {
   pt: 2,
   px: 2,
   pb: 2,
-   
 };
 
 const ChildModal = () => {
@@ -37,7 +38,9 @@ const ChildModal = () => {
 
   return (
     <React.Fragment>
-      <Button className={cssc.openChildModal} onClick={handleOpen}>Open Child Modal</Button>
+      <Button className={cssc.openChildModal} onClick={handleOpen}>
+        Open Child Modal
+      </Button>
       <Modal
         hideBackdrop
         open={open}
@@ -50,7 +53,9 @@ const ChildModal = () => {
           <p id="child-modal-description">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
           </p>
-          <Button className={cssc.closeWindow} onClick={handleClose}>Close Child Modal</Button>
+          <Button className={cssc.closeWindow} onClick={handleClose}>
+            Close Child Modal
+          </Button>
         </Box>
       </Modal>
     </React.Fragment>
@@ -58,6 +63,12 @@ const ChildModal = () => {
 };
 
 const Profile = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserBusy());
+  });
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -66,7 +77,6 @@ const Profile = () => {
     setOpen(false);
   };
 
-  const dispatch = useDispatch();
   const handleExit = () => {
     dispatch({ type: "Exit" });
   };
@@ -80,14 +90,21 @@ const Profile = () => {
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style, width: 500, height: 300, }} className={cssc.www}>
+        <Box sx={{ ...style, width: 500, height: 300 }} className={cssc.www}>
           <div className={cssc.wrapProfile}>
             <div className={cssc.imgWrap}>
-              <img src="https://cdn-icons-png.flaticon.com/512/1538/1538462.png" alt="" />
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/1538/1538462.png"
+                alt=""
+              />
             </div>
             <div className={cssc.infoWrap}>
-              <div className={cssc.userName}><span>user:</span> Ibra</div>
-              <div className={cssc.userEmail}><span>email:</span>ibra@gmail.com</div>
+              <div className={cssc.userName}>
+                <span>user:</span> Ibra
+              </div>
+              <div className={cssc.userEmail}>
+                <span>email:</span>ibra@gmail.com
+              </div>
             </div>
           </div>
           <ChildModal />

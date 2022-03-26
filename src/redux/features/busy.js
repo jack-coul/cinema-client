@@ -60,7 +60,7 @@ export const getBusy = () => {
   };
 };
 
-export const toBookThePlace = (number) => {
+export const toBookThePlace = (placesList, id) => {
   return async (dispatch, getState) => {
     const state = getState();
     const token = state.application.token;
@@ -72,12 +72,33 @@ export const toBookThePlace = (number) => {
           "Content-type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ number }),
+        body: JSON.stringify({ placesList, id }),
       });
       const place = await res.json();
       dispatch({ type: "toBook/fetch/fulfilled" });
     } catch (error) {
       dispatch({ type: "toBook/fetch/rejected", error });
+    }
+  };
+};
+
+export const getUserBusy = () => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    const token = state.user.token;
+    dispatch({ type: "get/userTickets/pending" });
+    try {
+      const res = await fetch("http://localhost:4000/user/busy", {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const tickets = await res.json();
+      console.log(tickets);
+      dispatch({ type: "get/userTickets/fulfilled", payload: tickets });
+    } catch (error) {
+      dispatch({ type: "get/userTickets/rejected", error });
     }
   };
 };
