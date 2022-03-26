@@ -62,7 +62,6 @@ body {
 }
 
 .login-box .user-box label {
-
   padding: 10px 0;
   font-size: 16px;
   color: #08e9f4;
@@ -72,7 +71,6 @@ body {
 
 .login-box .user-box input:focus ~ label,
 .login-box .user-box input:valid ~ label {
-
   color: #03e9f4;
   font-size: 12px;
 }
@@ -179,6 +177,9 @@ body {
   background: linear-gradient(360deg, transparent, #03e9f4);
   /* animation: btn-anim4 1s linear infinite;
   animation-delay: 0.75s; */
+}
+body.modal-open {
+  overflow: hidden;
 }
 
 @keyframes btn-anim4 {
