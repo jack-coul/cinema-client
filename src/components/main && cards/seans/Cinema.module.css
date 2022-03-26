@@ -59,8 +59,17 @@
   margin: 10px;
   border-radius: 5px;
   position: relative;
+  
 }
-
+.reserved{
+  background-color: rgb(95, 95, 94);
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+  border-radius: 5px;
+  position: relative;
+  pointer-events: none;
+}
 .number {
   position: absolute;
   margin-left: auto;
@@ -70,6 +79,16 @@
   text-align: center;
   line-height: 50px;
   opacity: 0;
+}
+.active{
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  line-height: 50px;
+  
 }
 .places:hover .number {
   border-radius: 50px;
@@ -94,6 +113,15 @@
   padding: 15px 30px;
   display: flex;
   flex-wrap: wrap;
+  
+}
+.blockPlaces{
+  width: 700px;
+  margin: auto;
+  padding: 15px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgba(238, 50, 50, 0.794);
 }
 
 .wrapButtonAndCards {

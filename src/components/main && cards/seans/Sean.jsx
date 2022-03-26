@@ -12,6 +12,7 @@ import Modal from "@mui/material/Modal";
 
 const Sean = ({ time, hall, name, genre, seanID, sean }) => {
   const [block, setBlock] = useState(false);
+
   const seans = useSelector((state) => state.seans.seans);
   const dispatch = useDispatch();
   const placeArr = [];
@@ -77,6 +78,7 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
                   <img src={img} alt="" />
                 </div>
 
+
                 <div className={!block ? style.wrapPlaces : style.blockPlaces}>
                   {placeArr.map((place) => {
                     return (
@@ -97,9 +99,14 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
           </div>
           <div className={style.wrapButtonAndCards}>
             <div className={style.reservePlaces}>
-              {places.map((place) => {
-                return <ReservedPlace setBlock={setBlock} place={place} />;
-              })}
+
+
+            {places.map((place)=>{
+              return(
+                <ReservedPlace setBlock={setBlock} place = {place}/>
+
+              )
+            })}
             </div>
             <Link
               onClick={() => handleAddPlace(seanID)}
