@@ -8,50 +8,52 @@ import { addPlace, getSeans } from "../../../redux/features/seans";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReservedPlace from "./ReservedPlace";
+import Modal from "@mui/material/Modal";
 
 const Sean = ({ time, hall, name, genre, seanID, sean }) => {
-  const [block, setBlock]= useState(false)
+  const [block, setBlock] = useState(false);
+
   const seans = useSelector((state) => state.seans.seans);
   const dispatch = useDispatch();
   const placeArr = [];
-  
-  if(hall._id===sean.hall._id){
-    
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => {
+    setOpen(false);
+    setCount(placeArr.length);
+    dispatch({ type: "clearPlaces" });
+  };
+
+  if (hall._id === sean.hall._id) {
     for (let i = 0; i < hall.placesCount; i++) {
       placeArr.push(i + 1);
     }
   }
 
   const token = useSelector((state) => state.user.token);
-  const places = useSelector((state)=> state.seans.places)
+  const places = useSelector((state) => state.seans.places);
   const [count, setCount] = useState(placeArr.length);
 
-  const [openCinemaPlace, setOpenCinemaPlace] = useState(false);
   useEffect(() => {
     dispatch(getSeans(seanID));
   }, [dispatch, seanID]);
 
-  const hundleShowCinemaPlaces = () => {
-    setOpenCinemaPlace(true);
-  };
-
-  const hundleCloseWindow = () => {
-    setOpenCinemaPlace(false);
-    setCount(placeArr.length);
-    dispatch({type: "clearPlaces"})
-  };
   const handleAddPlace = (id) => {
     if (token) {
       dispatch(addPlace(id));
-      dispatch({type: "clearPlaces"})
-
+      dispatch({ type: "clearPlaces" });
     }
   };
   return (
-    <>
-      {openCinemaPlace ? (
+    <div>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
         <div className={styles.cinemaPlaseWrap}>
-          <div onClick={hundleCloseWindow} className={style.closeButton}>
+          <div onClick={handleClose} className={style.closeButton}>
             x
           </div>
           <div className={styles.wrapWrap}>
@@ -68,13 +70,16 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
                     <div className={style.greyBlock}></div>
                     <div className={style.priceAndPlace}>Занято</div>
                   </div>
-                  <div className={style.placeLeft}>Осталось {count- sean.place.length} мест</div>
+                  <div className={style.placeLeft}>
+                    Осталось {count - sean.place.length} мест
+                  </div>
                 </div>
                 <div className={style.display}>
                   <img src={img} alt="" />
                 </div>
 
-                <div  className={!block?style.wrapPlaces:style.blockPlaces}>
+
+                <div className={!block ? style.wrapPlaces : style.blockPlaces}>
                   {placeArr.map((place) => {
                     return (
                       <Place
@@ -95,6 +100,7 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
           <div className={style.wrapButtonAndCards}>
             <div className={style.reservePlaces}>
 
+
             {places.map((place)=>{
               return(
                 <ReservedPlace setBlock={setBlock} place = {place}/>
@@ -111,11 +117,9 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
             </Link>
           </div>
         </div>
-      ) : (
-        ""
-      )}
-      <div className={styles.seansMap}>
-        <div onClick={hundleShowCinemaPlaces} className={styles.seansList}>
+      </Modal>
+      <div className={styles.seansMap} onClick={handleOpen}>
+        <div className={styles.seansList}>
           <div className={styles.fortimeButton}>
             <button className={styles.timeButton}>{time}</button>
           </div>
@@ -135,7 +139,7 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

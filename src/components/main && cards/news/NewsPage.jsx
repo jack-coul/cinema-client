@@ -13,6 +13,7 @@ const NewsPage = () => {
   }, [dispatch]);
 
   const news = useSelector((state) => state.news.news);
+  const films = useSelector((state) => state.films.films);
   console.log(news);
   return (
     <div className={styles.news}>
@@ -28,8 +29,8 @@ const NewsPage = () => {
             })}
           </div>
           <div>
-            <Card />
-            <Card />
+            <Card film={films[0]} />
+            <Card film={films[1]} />
           </div>
         </div>
       </div>
