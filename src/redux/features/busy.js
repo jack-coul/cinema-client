@@ -93,7 +93,6 @@ export const toBookThePlace = (placesList, id) => {
         body: JSON.stringify({ placesList, id }),
       });
       const place = await res.json();
-      console.log(place);
       dispatch({ type: "toBook/fetch/fulfilled" });
     } catch (error) {
       dispatch({ type: "toBook/fetch/rejected", error });
@@ -106,7 +105,6 @@ export const getUserBusy = () => {
     const state = getState();
 
     const token = state.user.token;
-    console.log(token);
     dispatch({ type: "get/userTickets/pending" });
     try {
       const res = await fetch("http://localhost:4000/user/busy", {
@@ -117,7 +115,6 @@ export const getUserBusy = () => {
         },
       });
       const tickets = await res.json();
-      console.log(tickets);
       dispatch({ type: "get/userTickets/fulfilled", payload: tickets });
     } catch (error) {
       dispatch({ type: "get/userTickets/rejected", error });

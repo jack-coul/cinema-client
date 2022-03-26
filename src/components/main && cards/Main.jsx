@@ -15,14 +15,13 @@ import MovieDescription from "./description/MovieDescription";
 import { getAllFilms } from "../../redux/features/films";
 
 const Main = () => {
-  const dispatch = useDispatch()
-  useEffect(()=>{
-    dispatch(getAllFilms())
-  },[dispatch])
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllFilms());
+  }, [dispatch]);
 
   const token = useSelector((state) => state.user.token);
 
-  console.log(token);
   if (token) {
     return (
       <div>
@@ -55,7 +54,7 @@ const Main = () => {
             path="/filmdiscription/:id"
             element={
               <>
-                <MovieDescription/>
+                <MovieDescription />
                 <div className={styles.main}>
                   <SoonContainer />
                 </div>
