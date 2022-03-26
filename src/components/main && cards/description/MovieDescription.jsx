@@ -5,6 +5,7 @@ import styles from "./Description.module.css";
 
 const MovieDescription = (props) => {
   const params = useParams();
+  console.log(params);
 
   const films = useSelector(state => state.films.films);
 
