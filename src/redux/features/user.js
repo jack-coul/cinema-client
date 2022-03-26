@@ -1,6 +1,7 @@
 const inintialState = {
   token: localStorage.getItem("token"),
   login: "",
+  userName: "",
 };
 
 const user = (state = inintialState, action) => {
@@ -42,6 +43,25 @@ const user = (state = inintialState, action) => {
         token: action.payload,
       };
     case "/user/login/rejected":
+      return {
+        ...state,
+        loadUser: false,
+        error: action.error,
+      };
+    case "get/user/pending":
+      return {
+        ...state,
+        loadUser: true,
+        error: null,
+      };
+    case "get/user/fulfilled":
+      return {
+        ...state,
+        loadUser: false,
+        userName: action.payload.name,
+        login: action.payload.login,
+      };
+    case "get/user/rejected":
       return {
         ...state,
         loadUser: false,
@@ -100,6 +120,33 @@ export const loginUser = (login, password) => {
       }
     } catch (err) {
       dispatch({ type: "/user/login/rejected", error: err.toString() });
+    }
+  };
+};
+
+export const getUser = () => {
+  return async (dispatch, getState) => {
+    const state = getState();
+    const token = state.user.token;
+    dispatch({ type: "get/user/pending" });
+    try {
+      const res = await fetch("http://localhost:4000/user", {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const user = await res.json();
+      dispatch({
+        type: "get/user/fulfilled",
+        payload: {
+          login: user.login,
+          name: user.name,
+        },
+      });
+    } catch (error) {
+      dispatch({ type: "get/user/rejected", error });
     }
   };
 };

@@ -84,6 +84,7 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
                   {placeArr.map((place) => {
                     return (
                       <Place
+                        key={place._id}
                         place={place}
                         state={seanID}
                         seans={seans}

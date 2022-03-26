@@ -9,10 +9,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import cssc from "./Profile.module.css";
 import cinemaImg from "../../../images/6.png";
 import cinemaImg3D from "../../../images/5.png";
-
 import { Link } from "react-router-dom";
-
 import { getUserBusy } from "../../../redux/features/busy";
+import { getUser } from "../../../redux/features/user";
+import { LocalDining } from "@mui/icons-material";
 
 const style = {
   position: "absolute",
@@ -32,12 +32,12 @@ const style = {
 const Profile = () => {
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(getUser());
     dispatch(getUserBusy());
   }, [dispatch]);
   const tickets = useSelector((state) => state.busy.tickets);
-
+  const { login, userName, loadUser } = useSelector((state) => state.user);
   const AllListFilms = tickets.map((ticket) => ticket.seans.film.name);
-  console.log(AllListFilms);
   const unique = (filmsList) => {
     let result = [];
 
@@ -49,7 +49,6 @@ const Profile = () => {
 
     return result;
   };
-  console.log(unique(AllListFilms));
   const films = unique(AllListFilms);
 
   const [open, setOpen] = React.useState(false);
@@ -91,9 +90,11 @@ const Profile = () => {
 
               <div className={cssc.userName}>
                 <span>userName:</span> Ibra
+                <span>user:</span> {loadUser ? "loading..." : userName}
               </div>
               <div className={cssc.userEmail}>
-                <span>email:</span>ibra@gmail.com
+                <span>email:</span>
+                {loadUser ? "loading..." : login}
               </div>
             </div>
           </div>
