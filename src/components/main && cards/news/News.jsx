@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./News.module.css";
 
 const News = ({ news }) => {
-  console.log(news);
   return (
     <div className={styles.newsCardWrap}>
       <div className={styles.newsImgWrap}>

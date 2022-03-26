@@ -14,7 +14,6 @@ const NewsPage = () => {
 
   const news = useSelector((state) => state.news.news);
   const films = useSelector((state) => state.films.films);
-  console.log(news);
   return (
     <div className={styles.news}>
       <div className={styles.newsTitles}>

@@ -89,7 +89,6 @@ const Profile = () => {
               </div>
 
               <div className={cssc.userName}>
-                <span>userName:</span> Ibra
                 <span>user:</span> {loadUser ? "loading..." : userName}
               </div>
               <div className={cssc.userEmail}>

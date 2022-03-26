@@ -32,14 +32,11 @@ const news = (state = initialState, action) => {
 export default news;
 
 export const getAllNews = () => {
-  console.log(2);
   return async (dispatch) => {
     dispatch({ type: "get/news/pending" });
     try {
       const res = await fetch("http://localhost:4000/news");
       const news = await res.json();
-
-      console.log(news);
 
       dispatch({ type: "get/news/fulfilled", payload: news });
     } catch (error) {
