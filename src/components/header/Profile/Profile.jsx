@@ -11,6 +11,8 @@ import cssc from "./Profile.module.css";
 import { Link } from "react-router-dom";
 
 import { getUserBusy } from "../../../redux/features/busy";
+import { getUser } from "../../../redux/features/user";
+import { LocalDining } from "@mui/icons-material";
 
 const style = {
   position: "absolute",
@@ -30,12 +32,12 @@ const style = {
 const Profile = () => {
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(getUser());
     dispatch(getUserBusy());
   }, [dispatch]);
   const tickets = useSelector((state) => state.busy.tickets);
-
+  const { login, userName, loadUser } = useSelector((state) => state.user);
   const AllListFilms = tickets.map((ticket) => ticket.seans.film.name);
-  console.log(AllListFilms);
   const unique = (filmsList) => {
     let result = [];
 
@@ -47,7 +49,6 @@ const Profile = () => {
 
     return result;
   };
-  console.log(unique(AllListFilms));
   const films = unique(AllListFilms);
 
   const [open, setOpen] = React.useState(false);
@@ -81,16 +82,18 @@ const Profile = () => {
             </div>
             <div className={cssc.infoWrap}>
               <div className={cssc.userName}>
-                <span>user:</span> Ibra
+                <span>user:</span> {loadUser ? "loading..." : userName}
               </div>
               <div className={cssc.userEmail}>
-                <span>email:</span>ibra@gmail.com
+                <span>email:</span>
+                {loadUser ? "loading..." : login}
               </div>
               <div>ваши билеты</div>
               <div>
-                {films.map((film) => (
+                {films.map((film, index) => (
                   <div>
                     <ChildModal
+                      key={index}
                       film={film}
                       tickets={tickets.filter(
                         (ticket) => ticket.seans.film.name === film
