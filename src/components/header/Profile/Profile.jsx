@@ -7,6 +7,8 @@ import Avatar from "@mui/material/Avatar";
 import styles from "../../navigate/Navigate.module.css";
 import LogoutIcon from "@mui/icons-material/Logout";
 import cssc from "./Profile.module.css";
+import cinemaImg from "../../../images/6.png";
+import cinemaImg3D from "../../../images/5.png";
 
 import { Link } from "react-router-dom";
 
@@ -18,10 +20,10 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "background.paper",
+  bgcolor: "#131e7f;;",
   border: "2px solid #000",
   boxShadow: 24,
-  borderRadius: 5,
+  borderRadius: 2,
   pt: 2,
   px: 2,
   pb: 2,
@@ -71,34 +73,43 @@ const Profile = () => {
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style, width: 500, height: 300 }} className={cssc.www}>
+        <Box sx={{ ...style, width: 450, height: 250 }} className={cssc.www}>
           <div className={cssc.wrapProfile}>
             <div className={cssc.imgWrap}>
               <img
-                src="https://cdn-icons-png.flaticon.com/512/1538/1538462.png"
+                src="https://cdn-icons-png.flaticon.com/512/236/236831.png"
                 alt=""
               />
             </div>
             <div className={cssc.infoWrap}>
+              <div className={cssc.imgBox1}>
+                <img src={cinemaImg} alt="" />
+              </div>
+              <div className={cssc.imgBox2}>
+                <img src={cinemaImg3D} alt="" />
+              </div>
+
               <div className={cssc.userName}>
-                <span>user:</span> Ibra
+                <span>userName:</span> Ibra
               </div>
               <div className={cssc.userEmail}>
                 <span>email:</span>ibra@gmail.com
               </div>
-              <div>ваши билеты</div>
-              <div>
-                {films.map((film) => (
-                  <div>
-                    <ChildModal
-                      film={film}
-                      tickets={tickets.filter(
-                        (ticket) => ticket.seans.film.name === film
-                      )}
-                    />
-                  </div>
-                ))}
-              </div>
+            </div>
+          </div>
+          <div className={cssc.ticketsWrap}>
+            <div>ваши билеты:</div>
+            <div className={cssc.tickets}>
+              {films.map((film) => (
+                <div>
+                  <ChildModal
+                    film={film}
+                    tickets={tickets.filter(
+                      (ticket) => ticket.seans.film.name === film
+                    )}
+                  />
+                </div>
+              ))}
             </div>
           </div>
 
@@ -134,7 +145,9 @@ const ChildModal = ({ film, tickets }) => {
 
   return (
     <React.Fragment>
-      <Button onClick={handleOpen}>{film}</Button>
+      <Button className={cssc.films} onClick={handleOpen}>
+        {film}
+      </Button>
       <Modal
         hideBackdrop
         open={open}
