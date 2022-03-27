@@ -4,22 +4,22 @@
     bottom: 15px;
     right: 15px;
     font-size: 50px;
-    color: #FFF;
-
-
+    color: gold;
 }
 .www {
     background-size: cover;
-    background-image: url("https://img1.goodfon.ru/wallpaper/nbig/0/d0/pervyy-mstitel-captain-3292.jpg")
+    background-repeat: no-repeat;
+   
+    /* background-image: url("https://cdn-icons-png.flaticon.com/512/864/864834.png") */
 }
 .openChildModal {
     font-size: 24px;
     position: absolute;
     bottom: 10px;
-    color: #FFF;
+    color: rgb(0, 0, 0);
     font-weight: 600;
     box-shadow: 1px 1px 10px rgb(255, 255, 255);
-    text-shadow: 1px 1px 10px rgb(255, 255, 255);
+
 }
 .wrapProfile img {
     width: 150px;
@@ -27,25 +27,69 @@
 .wrapProfile {
     display: flex;
 }
+.infoWrap .imgBox1 img {
+   width: 400px;
+   top: -120px;
+   left: -80px;
+   position: absolute;
+}
+.infoWrap .imgBox2 img {
+   width: 300px;
+   top: -150px;
+   left: 70px;
+   position: absolute;
+}
+
+.infoWrap {
+
+    text-align: center;
+    position: relative;
+    margin-top: 70px;
+    margin-left: 30px;
+    color: beige;
+}
 .infoWrap span {
     font-size: 18px;
-    color: rgb(251, 251, 251);
-    
+    color: rgb(240, 239, 239);
 }
 .infoWrap .userName {
-    color: rgb(251, 251, 251);
     font-size: 26px;
-    text-shadow: 1px 1px 10px rgb(255, 255, 255);
+    color: gold;
+    
 }
 .infoWrap .userEmail {
     font-size: 26px;
-    color: rgb(251, 251, 251);
-    text-shadow: 1px 1px 10px rgb(255, 255, 255);
+    color: gold;
 }
 .litleModal {
     box-shadow: 10px 10px 100px rgb(202, 202, 202);
     background-size: 150px;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url("https://cdn-icons-png.flaticon.com/512/1705/1705786.png");
+    color: #FFF;
+    text-align: center;
+}
+.litleModal .closeWindow {
+    color: gold;
+    font-weight: 600;
+    border: 1px solid gold;
+}
+.ticketsWrap {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    /* line-height: 50px; */
+    margin-top: 19px;
+}
+.tickets {
+    display: flex;
+}
+.films {
+    color: gold;
+    border: 1px solid gold;
+    font-weight: 700;
+    font-size: 12px;
+    margin-left: 5px;
+    text-shadow: 1px 1px 10px gold;
 }
