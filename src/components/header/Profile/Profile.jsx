@@ -10,9 +10,8 @@ import cssc from "./Profile.module.css";
 import cinemaImg from "../../../images/6.png";
 import cinemaImg3D from "../../../images/5.png";
 import { Link } from "react-router-dom";
-import busy, { deleteBusy, getUserBusy } from "../../../redux/features/busy";
+import { deleteBusy, getUserBusy } from "../../../redux/features/busy";
 import { deletePlace } from "../../../redux/features/seans";
-import { getUserBusy } from "../../../redux/features/busy";
 import { getUser } from "../../../redux/features/user";
 
 const style = {
@@ -34,7 +33,6 @@ const Profile = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUser());
-    dispatch(getUserBusy());
   }, [dispatch]);
 
   const { tickets, loadingTickets } = useSelector((state) => state.busy);
@@ -156,7 +154,6 @@ const ChildModal = ({ film, tickets }) => {
         if (bus.place === busyPlace) {
           dispatch(deleteBusy(bus._id));
           dispatch(deletePlace(busyPlace, bus.seans._id));
-          console.log(bus.seans._id);
         }
     });
   };
