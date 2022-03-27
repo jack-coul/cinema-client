@@ -32,13 +32,11 @@ const seans = (state = initialState, action) => {
         error: null,
       };
     case "get/seans/fulfilled":
-      if (action.payload) {
-        return {
-          ...state,
-          loadingSeans: false,
-          seans: [...state.seans, ...action.payload],
-        };
-      }
+      return {
+        ...state,
+        loadingSeans: false,
+        seans: [...state.seans, ...action.payload],
+      };
     case "seans/patch/fullfilled":
       return {
         ...state,
@@ -57,24 +55,23 @@ const seans = (state = initialState, action) => {
     case "clearPlaces":
       return {
         ...state,
-        places: []
-      }
+        places: [],
+      };
     case "seans/patch/delete/fullfilled":
-      return{
+      return {
         ...state,
         places: [
-          ...state.places.filter((place)=>{
-            return place !== action.payload
-          })
+          ...state.places.filter((place) => {
+            return place !== action.payload;
+          }),
         ],
-        placeDeleteLoad: false
-
-      }
+        placeDeleteLoad: false,
+      };
     case "seans/patch/delete/rejected":
-      return{
+      return {
         ...state,
-        error: action.error
-      }
+        error: action.error,
+      };
     default:
       return state;
   }
@@ -86,7 +83,9 @@ export const getSeanses = () => {
     try {
       const res = await fetch("http://localhost:4000/seans");
       const seans = await res.json();
-      dispatch({ type: "get/seanses/fulfilled", payload: seans });
+      if (seans) {
+        dispatch({ type: "get/seanses/fulfilled", payload: seans });
+      }
     } catch (error) {
       dispatch({ type: "get/seanses/rejected", error });
     }
@@ -128,9 +127,9 @@ export const addPlace = (id) => {
     }
   };
 };
-export const deletePlace = (places,id)=>{
-  return async (dispatch, getState)=>{
-    const state = getState()
+export const deletePlace = (places, id) => {
+  return async (dispatch, getState) => {
+    const state = getState();
     try {
       await fetch(`http://localhost:4000/seans/place/${id}`, {
         method: "PATCH",
@@ -144,7 +143,7 @@ export const deletePlace = (places,id)=>{
     } catch (err) {
       dispatch({ type: "seans/patch/delete/rejected", error: err.toString() });
     }
-  }
-}
+  };
+};
 
 export default seans;
