@@ -58,6 +58,15 @@ const busy = (state = initialState, action) => {
         loadingTickets: false,
         error: action.error,
       };
+    case "busy/delete/fullfilled":
+      return{
+        ...state,
+        tickets: [
+          ...state.tickets.filter((ticket)=>{
+           return ticket._id !== action.payload 
+          })
+        ]
+      }
     default:
       return state;
   }
@@ -119,5 +128,24 @@ export const getUserBusy = () => {
     }
   };
 };
+export const deleteBusy = (id)=>{
+  return async(dispatch, getState)=>{
+    const state = getState()
+    try{
+      const res = await fetch(`http://localhost:4000/user/busy/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${state.user.token}`,
+          "Content-type": "application/json"
+        }
+      })
+      const busy = await res.json()
+      dispatch({type: "busy/delete/fullfilled", payload: id})
+    }
+    catch(err){
+      dispatch({type: "busy/delete/rejected", error: err.toString()})
+    }
+  }
+}
 
 export default busy;
