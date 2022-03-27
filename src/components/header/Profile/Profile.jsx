@@ -11,7 +11,6 @@ import cinemaImg from "../../../images/6.png";
 import { Link } from "react-router-dom";
 import busy, { deleteBusy, getUserBusy } from "../../../redux/features/busy";
 import { deletePlace } from "../../../redux/features/seans";
-import { getUserBusy } from "../../../redux/features/busy";
 import { getUser } from "../../../redux/features/user";
 
 
@@ -40,6 +39,7 @@ const Profile = () => {
   const { tickets, loadingTickets } = useSelector((state) => state.busy);
   const { login, userName, loadUser } = useSelector((state) => state.user);
   const AllListFilms = tickets.map((ticket) => ticket.seans.film.name);
+
   const unique = (filmsList) => {
     let result = [];
 
@@ -152,7 +152,6 @@ const dispatch = useDispatch()
       if(bus.place === busyPlace){
       dispatch(deleteBusy(bus._id))
       dispatch(deletePlace(busyPlace,bus.seans._id))
-      console.log(bus.seans._id)
       }
     })
   }
