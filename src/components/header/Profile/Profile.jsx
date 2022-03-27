@@ -73,7 +73,10 @@ const Profile = () => {
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style, width: 'auto', height: 'auto' }} className={cssc.www}>
+        <Box
+          sx={{ ...style, width: "auto", height: "auto" }}
+          className={cssc.www}
+        >
           <div className={cssc.wrapProfile}>
             <div className={cssc.imgWrap}>
               <img
@@ -138,22 +141,24 @@ const ChildModal = ({ film, tickets }) => {
   const handleClose = () => {
     setOpen(false);
   };
-  const places = tickets.map((ticket) => {
-    if (ticket.seans.film.name === film) {
-      return ticket.place;
-    }
-  });
-
-const dispatch = useDispatch()
-  const handleBusy = (busyPlace)=>{
-    tickets.forEach((bus)=>{
-      if(bus.seans.film.name === film)
-      if(bus.place === busyPlace){
-      dispatch(deleteBusy(bus._id))
-      dispatch(deletePlace(busyPlace,bus.seans._id))
+  const places = tickets
+    .map((ticket) => {
+      if (ticket.seans.film.name === film) {
+        return ticket.place;
       }
     })
-  }
+    .sort((a, b) => a - b);
+
+  const dispatch = useDispatch();
+  const handleBusy = (busyPlace) => {
+    tickets.forEach((bus) => {
+      if (bus.seans.film.name === film)
+        if (bus.place === busyPlace) {
+          dispatch(deleteBusy(bus._id));
+          dispatch(deletePlace(busyPlace, bus.seans._id));
+        }
+    });
+  };
 
   const startSeans = tickets.find((ticket) => ticket.seans.film.name === film);
 

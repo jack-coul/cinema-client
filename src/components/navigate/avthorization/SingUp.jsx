@@ -13,7 +13,8 @@ const SingUp = () => {
   const [validLogin, setValidLogin] = useState("");
   const [validPassword, setValidPassword] = useState("");
   const searchEmail = useSelector((state) => state.user.error);
-  console.log(searchEmail);
+  const message = useSelector((state) => state.user.message);
+  console.log(message);
   const handleValidEmail = (e) => {
     setLogin(e.target.value);
     const emailValid =
@@ -66,7 +67,7 @@ const SingUp = () => {
               name=""
               required=""
             />
-
+            {message && <div>{message}</div>}
             <div className={style.validLogins}>{validLogin}</div>
           </div>
           <div className="user-box">
