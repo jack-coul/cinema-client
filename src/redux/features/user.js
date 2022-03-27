@@ -65,6 +65,7 @@ const user = (state = inintialState, action) => {
       return {
         ...state,
         loadUser: false,
+        message: action.payload,
         error: action.error,
       };
     default:
@@ -93,7 +94,7 @@ export const registerUser = (name, login, password) => {
       } else {
         dispatch({
           type: "/user/register/rejected",
-          error: "Такой email уже существует",
+          payload: user,
         });
       }
     } catch (err) {
