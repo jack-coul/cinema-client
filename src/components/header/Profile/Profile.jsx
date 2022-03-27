@@ -8,7 +8,6 @@ import styles from "../../navigate/Navigate.module.css";
 import LogoutIcon from "@mui/icons-material/Logout";
 import cssc from "./Profile.module.css";
 import cinemaImg from "../../../images/6.png";
-import cinemaImg3D from "../../../images/5.png";
 import { Link } from "react-router-dom";
 import { getUserBusy } from "../../../redux/features/busy";
 import { getUser } from "../../../redux/features/user";
@@ -72,7 +71,7 @@ const Profile = () => {
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style, width: 450, height: 250 }} className={cssc.www}>
+        <Box sx={{ ...style, width: 'auto', height: 'auto' }} className={cssc.www}>
           <div className={cssc.wrapProfile}>
             <div className={cssc.imgWrap}>
               <img
@@ -84,10 +83,6 @@ const Profile = () => {
               <div className={cssc.imgBox1}>
                 <img src={cinemaImg} alt="" />
               </div>
-              <div className={cssc.imgBox2}>
-                <img src={cinemaImg3D} alt="" />
-              </div>
-
               <div className={cssc.userName}>
                 <span>user:</span> {loadUser ? "loading..." : userName}
               </div>
@@ -101,7 +96,7 @@ const Profile = () => {
             <div>ваши билеты:</div>
             <div className={cssc.tickets}>
               {films.map((film) => (
-                <div>
+                <div className={cssc.films}>
                   <ChildModal
                     film={film}
                     tickets={tickets.filter(

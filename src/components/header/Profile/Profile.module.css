@@ -28,24 +28,21 @@
     display: flex;
 }
 .infoWrap .imgBox1 img {
-   width: 400px;
-   top: -120px;
-   left: -80px;
    position: absolute;
+    width: 400px;
+    height: 200px;
+   left: -130%;
+   top: -30%;
 }
-.infoWrap .imgBox2 img {
-   width: 300px;
-   top: -150px;
-   left: 70px;
-   position: absolute;
-}
-
+.infoWrap .imgBox1 {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+ }
 .infoWrap {
-
     text-align: center;
     position: relative;
-    margin-top: 70px;
-    margin-left: 30px;
     color: beige;
 }
 .infoWrap span {
@@ -76,20 +73,27 @@
 }
 .ticketsWrap {
     display: flex;
-    align-items: center;
     color: white;
-    font-size: 16px;
+    font-size: 18px;
+
     /* line-height: 50px; */
     margin-top: 19px;
 }
 .tickets {
     display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    
 }
 .films {
     color: gold;
-    border: 1px solid gold;
+    border: 1px solid rgb(253, 215, 0);
     font-weight: 700;
     font-size: 12px;
-    margin-left: 5px;
+    margin-left: 10px;
+    margin-bottom: 10px;
     text-shadow: 1px 1px 10px gold;
+}
+.films button {
+    color: gold;
 }
