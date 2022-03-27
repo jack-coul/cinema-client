@@ -100,7 +100,7 @@ const Profile = () => {
             <div>ваши билеты:</div>
             <div className={cssc.tickets}>
               {films.map((film, i) => (
-                <div>
+                <div className={cssc.filmsWrap}>
                   {loadingTickets ? (
                     "loading..."
                   ) : (
@@ -159,9 +159,9 @@ const dispatch = useDispatch()
 
   return (
     <React.Fragment>
-      <Button className={cssc.films} onClick={handleOpen}>
+      <div className={cssc.films} onClick={handleOpen}>
         {film}
-      </Button>
+      </div>
       <Modal
         hideBackdrop
         open={open}
