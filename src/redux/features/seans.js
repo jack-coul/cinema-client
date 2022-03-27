@@ -32,15 +32,16 @@ const seans = (state = initialState, action) => {
         error: null,
       };
     case "get/seans/fulfilled":
-      return {
-        ...state,
-        loadingSeans: false,
-        seans: [...state.seans, ...action.payload],
-      };
+      if (action.payload) {
+        return {
+          ...state,
+          loadingSeans: false,
+          seans: [...state.seans, ...action.payload],
+        };
+      }
     case "seans/patch/fullfilled":
       return {
         ...state,
-
         reservedPlace: [...state.reservedPlace, action.payload],
       };
     case "addPlace":
@@ -54,10 +55,10 @@ const seans = (state = initialState, action) => {
         places: [...state.places.filter((place) => place !== action.payload)],
       };
     case "clearPlaces":
-      return{
+      return {
         ...state,
-        places: []
-      }
+        places: [],
+      };
     default:
       return state;
   }
