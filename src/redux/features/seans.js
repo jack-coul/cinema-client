@@ -32,15 +32,16 @@ const seans = (state = initialState, action) => {
         error: null,
       };
     case "get/seans/fulfilled":
-      return {
-        ...state,
-        loadingSeans: false,
-        seans: [...state.seans, ...action.payload],
-      };
+      if (action.payload) {
+        return {
+          ...state,
+          loadingSeans: false,
+          seans: [...state.seans, ...action.payload],
+        };
+      }
     case "seans/patch/fullfilled":
       return {
         ...state,
-
         reservedPlace: [...state.reservedPlace, action.payload],
       };
     case "addPlace":
@@ -54,9 +55,25 @@ const seans = (state = initialState, action) => {
         places: [...state.places.filter((place) => place !== action.payload)],
       };
     case "clearPlaces":
-      return{
+      return {
         ...state,
         places: []
+      }
+    case "seans/patch/delete/fullfilled":
+      return{
+        ...state,
+        places: [
+          ...state.places.filter((place)=>{
+            return place !== action.payload
+          })
+        ],
+        placeDeleteLoad: false
+
+      }
+    case "seans/patch/delete/rejected":
+      return{
+        ...state,
+        error: action.error
       }
     default:
       return state;
@@ -111,5 +128,23 @@ export const addPlace = (id) => {
     }
   };
 };
+export const deletePlace = (places,id)=>{
+  return async (dispatch, getState)=>{
+    const state = getState()
+    try {
+      await fetch(`http://localhost:4000/seans/place/${id}`, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${state.user.token}`,
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ places }),
+      });
+      dispatch({ type: "seans/patch/delete/fullfilled", payload: places });
+    } catch (err) {
+      dispatch({ type: "seans/patch/delete/rejected", error: err.toString() });
+    }
+  }
+}
 
 export default seans;

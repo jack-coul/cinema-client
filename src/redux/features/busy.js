@@ -1,7 +1,5 @@
 const initialState = {
-  busy: [],
   error: null,
-  user: "",
   tickets: [],
 };
 
@@ -10,56 +8,65 @@ const busy = (state = initialState, action) => {
     case "get/busy/pending":
       return {
         ...state,
-        loadingBusy: true,
+        loadingTickets: true,
         error: null,
       };
     case "get/busy/fulfilled":
       return {
         ...state,
-        loadingBusy: false,
-        busy: [...action.payload],
+        loadingTickets: false,
+        tickets: [...action.payload],
       };
     case "get/busy/rejected":
       return {
         ...state,
-        loadingBusy: false,
+        loadingTickets: false,
         error: action.payload,
       };
     case "toBook/fetch/pending":
       return {
         ...state,
-        loadingBusy: true,
+        loadingTickets: true,
         error: null,
       };
     case "toBook/fetch/fulfilled":
       return {
         ...state,
-        loadingBusy: false,
-        busy: [...state.busy, { ...action.payload }],
+        loadingTickets: false,
+        tickets: [...action.payload],
       };
     case "toBook/fetch/rejected":
       return {
         ...state,
-        loadingBusy: false,
+        loadingTickets: false,
         error: action.payload,
       };
     case "get/userTickets/pending":
       return {
         ...state,
-        loadTickets: true,
+        loadingTickets: true,
       };
     case "get/userTickets/fulfilled":
       return {
         ...state,
-        loadTickets: false,
+        loadingTickets: false,
         tickets: [...action.payload],
       };
     case "get/userTickets/rejected":
       return {
         ...state,
-        loadTickets: false,
+        loadingTickets: false,
         error: action.error,
       };
+    case "busy/delete/fullfilled":
+      return{
+        ...state,
+        tickets: [
+          ...state.tickets.filter((ticket)=>{
+           return ticket._id !== action.payload 
+          })
+        ]
+      }
     default:
       return state;
   }
@@ -93,7 +100,7 @@ export const toBookThePlace = (placesList, id) => {
         body: JSON.stringify({ placesList, id }),
       });
       const place = await res.json();
-      dispatch({ type: "toBook/fetch/fulfilled" });
+      dispatch({ type: "toBook/fetch/fulfilled", payload: place });
     } catch (error) {
       dispatch({ type: "toBook/fetch/rejected", error });
     }
@@ -121,5 +128,24 @@ export const getUserBusy = () => {
     }
   };
 };
+export const deleteBusy = (id)=>{
+  return async(dispatch, getState)=>{
+    const state = getState()
+    try{
+      const res = await fetch(`http://localhost:4000/user/busy/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${state.user.token}`,
+          "Content-type": "application/json"
+        }
+      })
+      const busy = await res.json()
+      dispatch({type: "busy/delete/fullfilled", payload: id})
+    }
+    catch(err){
+      dispatch({type: "busy/delete/rejected", error: err.toString()})
+    }
+  }
+}
 
 export default busy;
