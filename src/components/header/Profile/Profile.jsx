@@ -12,7 +12,6 @@ import cinemaImg3D from "../../../images/5.png";
 import { Link } from "react-router-dom";
 import { getUserBusy } from "../../../redux/features/busy";
 import { getUser } from "../../../redux/features/user";
-import { LocalDining } from "@mui/icons-material";
 
 const style = {
   position: "absolute",
@@ -35,7 +34,7 @@ const Profile = () => {
     dispatch(getUser());
     dispatch(getUserBusy());
   }, [dispatch]);
-  const tickets = useSelector((state) => state.busy.tickets);
+  const { tickets, loadingTickets } = useSelector((state) => state.busy);
   const { login, userName, loadUser } = useSelector((state) => state.user);
   const AllListFilms = tickets.map((ticket) => ticket.seans.film.name);
   const unique = (filmsList) => {
@@ -54,6 +53,7 @@ const Profile = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
+    dispatch(getUserBusy());
   };
   const handleClose = () => {
     setOpen(false);
@@ -100,14 +100,19 @@ const Profile = () => {
           <div className={cssc.ticketsWrap}>
             <div>ваши билеты:</div>
             <div className={cssc.tickets}>
-              {films.map((film) => (
+              {films.map((film, i) => (
                 <div>
-                  <ChildModal
-                    film={film}
-                    tickets={tickets.filter(
-                      (ticket) => ticket.seans.film.name === film
-                    )}
-                  />
+                  {loadingTickets ? (
+                    "loading..."
+                  ) : (
+                    <ChildModal
+                      film={film}
+                      key={i}
+                      tickets={tickets.filter(
+                        (ticket) => ticket.seans.film.name === film
+                      )}
+                    />
+                  )}
                 </div>
               ))}
             </div>
