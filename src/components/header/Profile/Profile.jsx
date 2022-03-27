@@ -9,10 +9,9 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import cssc from "./Profile.module.css";
 import cinemaImg from "../../../images/6.png";
 import { Link } from "react-router-dom";
-import busy, { deleteBusy, getUserBusy } from "../../../redux/features/busy";
+import { deleteBusy, getUserBusy } from "../../../redux/features/busy";
 import { deletePlace } from "../../../redux/features/seans";
 import { getUser } from "../../../redux/features/user";
-
 
 const style = {
   position: "absolute",
@@ -33,7 +32,6 @@ const Profile = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUser());
-    dispatch(getUserBusy());
   }, [dispatch]);
 
   const { tickets, loadingTickets } = useSelector((state) => state.busy);
@@ -145,6 +143,7 @@ const ChildModal = ({ film, tickets }) => {
       return ticket.place;
     }
   });
+
 const dispatch = useDispatch()
   const handleBusy = (busyPlace)=>{
     tickets.forEach((bus)=>{
@@ -155,6 +154,7 @@ const dispatch = useDispatch()
       }
     })
   }
+
   const startSeans = tickets.find((ticket) => ticket.seans.film.name === film);
 
   return (
@@ -178,9 +178,12 @@ const dispatch = useDispatch()
             <span>Количество билетов: </span> {tickets.length}
           </p>
           <p>
-            Места: <span>{places.map((place)=>{
-              return <span onClick={()=> handleBusy(place)}>{place}</span>
-            })}</span>
+            Места:{" "}
+            <span>
+              {places.map((place) => {
+                return <span onClick={() => handleBusy(place)}>{place}</span>;
+              })}
+            </span>
           </p>
           <p>
             Начало сеанса: <span>{startSeans.seans.time}</span>
