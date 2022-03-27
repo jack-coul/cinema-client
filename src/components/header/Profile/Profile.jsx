@@ -37,6 +37,7 @@ const Profile = () => {
   const { tickets, loadingTickets } = useSelector((state) => state.busy);
   const { login, userName, loadUser } = useSelector((state) => state.user);
   const AllListFilms = tickets.map((ticket) => ticket.seans.film.name);
+
   const unique = (filmsList) => {
     let result = [];
 
@@ -97,7 +98,7 @@ const Profile = () => {
             <div>ваши билеты:</div>
             <div className={cssc.tickets}>
               {films.map((film, i) => (
-                <div>
+                <div className={cssc.filmsWrap}>
                   {loadingTickets ? (
                     "loading..."
                   ) : (
@@ -142,23 +143,25 @@ const ChildModal = ({ film, tickets }) => {
       return ticket.place;
     }
   });
-  const dispatch = useDispatch();
-  const handleBusy = (busyPlace) => {
-    tickets.forEach((bus) => {
-      if (bus.seans.film.name === film)
-        if (bus.place === busyPlace) {
-          dispatch(deleteBusy(bus._id));
-          dispatch(deletePlace(busyPlace, bus.seans._id));
-        }
-    });
-  };
+
+const dispatch = useDispatch()
+  const handleBusy = (busyPlace)=>{
+    tickets.forEach((bus)=>{
+      if(bus.seans.film.name === film)
+      if(bus.place === busyPlace){
+      dispatch(deleteBusy(bus._id))
+      dispatch(deletePlace(busyPlace,bus.seans._id))
+      }
+    })
+  }
+
   const startSeans = tickets.find((ticket) => ticket.seans.film.name === film);
 
   return (
     <React.Fragment>
-      <Button className={cssc.films} onClick={handleOpen}>
+      <div className={cssc.films} onClick={handleOpen}>
         {film}
-      </Button>
+      </div>
       <Modal
         hideBackdrop
         open={open}

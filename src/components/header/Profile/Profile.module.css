@@ -81,19 +81,22 @@
 }
 .tickets {
     display: flex;
-    flex-wrap: wrap;
-    width: 80%;
+  flex-wrap:wrap;
+    width: 70%;
     
 }
 .films {
     color: gold;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
     border: 1px solid rgb(253, 215, 0);
     font-weight: 700;
-    font-size: 12px;
+    font-size: 18px;
     margin-left: 10px;
     margin-bottom: 10px;
     text-shadow: 1px 1px 10px gold;
 }
-.films button {
+.filmsWrap .films div {
     color: gold;
 }
