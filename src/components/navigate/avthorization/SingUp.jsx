@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { registerUser } from "../../../redux/features/user";
 import styles from "../Navigate.module.css";
+import style from "./Signin.module.css";
 
 const SingUp = () => {
   const dispatch = useDispatch();
@@ -11,7 +12,8 @@ const SingUp = () => {
   const [name, setName] = useState();
   const [validLogin, setValidLogin] = useState("");
   const [validPassword, setValidPassword] = useState("");
-
+  const searchEmail = useSelector((state) => state.user.error);
+  const message = useSelector((state) => state.user.message);
   const handleValidEmail = (e) => {
     setLogin(e.target.value);
     const emailValid =
@@ -46,19 +48,42 @@ const SingUp = () => {
         <h2>Login</h2>
         <form>
           <div className="user-box">
-            <input type="text" name="" required="" />
             <label>Username</label>
+            <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              type="text"
+              name=""
+              required=""
+            />
           </div>
           <div className="user-box">
-            <input type="text" name="" required="" />
             <label>Email</label>
+            <input
+              value={login}
+              onChange={(e) => handleValidEmail(e)}
+              type="text"
+              name=""
+              required=""
+            />
+            {message && <div>{message}</div>}
+            <div className={style.validLogins}>{validLogin}</div>
           </div>
           <div className="user-box">
-            <input type="password" name="" required="" />
             <label>Password</label>
+            <input
+              value={password}
+              onChange={(e) => handleValidPassword(e)}
+              type="password"
+              name=""
+              required=""
+            />
+
+            <div className={style.validLogins}>{validPassword}</div>
+            <span>{searchEmail && searchEmail}</span>
           </div>
           <div className="buttons">
-            <Link to="#">
+            <Link onClick={() => handleRegister(name, login, password)} to="#">
               <span></span>
               <span></span>
               <span></span>

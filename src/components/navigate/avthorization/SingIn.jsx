@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../Navigate.module.css";
+import style from "./Signin.module.css";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../../redux/features/user";
 import { useState } from "react";
@@ -46,20 +47,37 @@ const SingIn = () => {
         <h2>Login</h2>
         <form>
           <div className="user-box">
-            <input type="text" name="" required="" />
-            <label>Username</label>
+            <label>Email</label>
+            <input
+              value={login}
+              onChange={(e) => handleValidEmail(e)}
+              type="text"
+              name=""
+              required=""
+            />
+
+            <div className={style.validLogins}>{validLogin}</div>
           </div>
           <div className="user-box">
-            <input type="password" name="" required="" />
             <label>Password</label>
+            <input
+              value={password}
+              onChange={(e) => handleValidPassword(e)}
+              type="password"
+              name=""
+              required=""
+            />
+
+            <div className={style.validLogins}>{validPassword}</div>
           </div>
           <div className="buttons">
-            <Link to="#">
+            <Link onClick={() => handleLogin(login, password)} to="#">
               <span></span>
               <span></span>
               <span></span>
               <span></span>Sign in
             </Link>
+
             <Link to="/signup">
               <span></span>
               <span></span>

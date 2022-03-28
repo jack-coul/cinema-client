@@ -1,0 +1,112 @@
+.singWrap svg {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 50px;
+  color: gold;
+}
+.www {
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  /* background-image: url("https://cdn-icons-png.flaticon.com/512/864/864834.png") */
+}
+.openChildModal {
+  font-size: 24px;
+  position: absolute;
+  bottom: 10px;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  box-shadow: 1px 1px 10px rgb(255, 255, 255);
+}
+.wrapProfile img {
+  width: 150px;
+}
+.wrapProfile {
+  display: flex;
+}
+.infoWrap .imgBox1 img {
+  position: absolute;
+  width: 400px;
+  height: 200px;
+  left: -130%;
+  top: -30%;
+}
+.infoWrap .imgBox1 {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+}
+.infoWrap {
+  text-align: center;
+  position: relative;
+  color: beige;
+}
+.infoWrap span {
+  font-size: 18px;
+  color: rgb(240, 239, 239);
+}
+.infoWrap .userName {
+  font-size: 26px;
+  color: gold;
+}
+.infoWrap .userEmail {
+  font-size: 26px;
+  color: gold;
+}
+.litleModal {
+  box-shadow: 10px 10px 100px rgb(202, 202, 202);
+  background-size: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  text-align: center;
+}
+.litleModal .closeWindow {
+  color: gold;
+  font-weight: 600;
+  border: 1px solid gold;
+  margin-top: 5px;
+}
+.ticketsWrap {
+  display: flex;
+  color: white;
+  font-size: 18px;
+
+  /* line-height: 50px; */
+  margin-top: 19px;
+}
+.tickets {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70%;
+}
+.films {
+  color: gold;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 1px solid rgb(253, 215, 0);
+  font-weight: 700;
+  font-size: 18px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 10px gold;
+}
+.filmsWrap .films div {
+  color: gold;
+}
+.litleModal p {
+  padding: 0;
+  margin: 0;
+}
+.countTicket {
+  color: gold;
+}
+.ticketReturn {
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 25px;
+}

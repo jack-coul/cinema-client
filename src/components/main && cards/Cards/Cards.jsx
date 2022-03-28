@@ -5,20 +5,13 @@ import styles from "./Cards.module.css";
 import CardTomorrow from "./CardTomorrow";
 
 const Cards = () => {
-  const { films, loadingFilms } = useSelector((state) => state.films);
-  console.log(films);
+  const films = useSelector((state) => state.films.films);
+
   return (
     <div className={styles.cards}>
-      {/* {films.map((film) => {
+      {films.map((film) => {
         return <Card film={film} />;
-      })} */}
-      
-      <Card />
-      <Card />
-      <CardTomorrow />
-      <CardTomorrow />
-      <CardTomorrow />
-      <CardTomorrow />
+      })}
     </div>
   );
 };

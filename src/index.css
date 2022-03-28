@@ -17,7 +17,7 @@ body {
   background-attachment: fixed;
   background-position: center top;
   margin: 0;
-  background-color: black;
+  background-color: #a5defb;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -54,7 +54,7 @@ body {
   padding: 10px 0;
   font-size: 16px;
   color: #fff;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   border: none;
   border-bottom: 1px solid #fff;
   outline: none;
@@ -62,20 +62,15 @@ body {
 }
 
 .login-box .user-box label {
-  position: absolute;
-  top: 0;
-  left: 0;
   padding: 10px 0;
   font-size: 16px;
-  color: #fff;
+  color: #08e9f4;
   pointer-events: none;
   transition: 0.5s;
 }
 
 .login-box .user-box input:focus ~ label,
 .login-box .user-box input:valid ~ label {
-  top: -20px;
-  left: 0;
   color: #03e9f4;
   font-size: 12px;
 }
@@ -90,7 +85,7 @@ body {
   text-transform: uppercase;
   overflow: hidden;
   transition: 0.5s;
-  margin-top: 40px;
+  margin-top: 10px;
   letter-spacing: 4px;
 }
 
@@ -113,7 +108,7 @@ body {
   width: 100%;
   height: 2px;
   background: linear-gradient(90deg, transparent, #03e9f4);
-  animation: btn-anim1 1s linear infinite;
+  /* animation: btn-anim1 1s linear infinite; */
 }
 
 @keyframes btn-anim1 {
@@ -133,8 +128,8 @@ body {
   width: 2px;
   height: 100%;
   background: linear-gradient(180deg, transparent, #03e9f4);
-  animation: btn-anim2 1s linear infinite;
-  animation-delay: 0.25s;
+  /* animation: btn-anim2 1s linear infinite;
+  animation-delay: 0.25s; */
 }
 
 @keyframes btn-anim2 {
@@ -154,8 +149,8 @@ body {
   width: 100%;
   height: 2px;
   background: linear-gradient(270deg, transparent, #03e9f4);
-  animation: btn-anim3 1s linear infinite;
-  animation-delay: 0.5s;
+  /* animation: btn-anim3 1s linear infinite;
+  animation-delay: 0.5s; */
 }
 
 @keyframes btn-anim3 {
@@ -180,8 +175,11 @@ body {
   width: 2px;
   height: 100%;
   background: linear-gradient(360deg, transparent, #03e9f4);
-  animation: btn-anim4 1s linear infinite;
-  animation-delay: 0.75s;
+  /* animation: btn-anim4 1s linear infinite;
+  animation-delay: 0.75s; */
+}
+body.modal-open {
+  overflow: hidden;
 }
 
 @keyframes btn-anim4 {

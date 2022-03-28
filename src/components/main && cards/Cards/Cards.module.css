@@ -14,12 +14,18 @@
   height: 384px;
   width: 100%;
   position: relative;
+  display: inline-block;
+  overflow: hidden;
 }
 .cardImg {
   height: 384px;
   width: 100%;
   cursor: pointer;
-  background-image: url("https://s2ru1.kinoplan24.ru/563/5728a01246cd5f/11011.jpg?mode=fit&width=512&height=512");
+  display: block;
+  transition: 0.4s;
+}
+.cardImg:hover {
+  transform: scale(1.1);
 }
 
 .year {

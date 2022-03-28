@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import Today from './Today';
-import Tomorrow from './Tomorrow';
+import Today from "./Today";
+import Tomorrow from "./Tomorrow";
 
 const DateNav = () => {
-    return (
-        <>
-            <Today/>
-            <Tomorrow/>
-        </>
-    );
+  return (
+    <>
+      <Today />
+      <Tomorrow />
+    </>
+  );
 };
 
 export default DateNav;
