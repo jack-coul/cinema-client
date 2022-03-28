@@ -1,13 +1,18 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getReview } from "../../../redux/features/review";
 import styles from "./Description.module.css";
+import Review from "./Review";
 
 const MovieDescription = (props) => {
   const params = useParams();
-
-  const films = useSelector(state => state.films.films);
-
+  const dispatch = useDispatch();
+  const films = useSelector((state) => state.films.films);
+  useEffect(() => {
+    dispatch(getReview());
+  }, [dispatch]);
+  const reviews = useSelector((state) => state.revie.reviews);
   return (
     <>
       {films.map((film) => {
@@ -21,10 +26,7 @@ const MovieDescription = (props) => {
               </div>
               <div className={styles.main}>
                 <div className={styles.aside}>
-                  <img
-                    src={film.img}
-                    alt="smert na nile"
-                  />
+                  <img src={film.img} alt="smert na nile" />
                   <div className={styles.rating}>
                     <div className={styles.ratingItem}>
                       <div className={styles.ratingTitle}>Кинопоиск</div>
@@ -66,10 +68,7 @@ const MovieDescription = (props) => {
                   </div>
                   <div className={styles.videoPlayer}>
                     <video className={styles.video} controls>
-                      <source
-                        src={film.video}
-                        type="video/mp4"
-                      />
+                      <source src={film.video} type="video/mp4" />
                     </video>
                   </div>
                   <div className={styles.aboutMovie}>
@@ -100,6 +99,14 @@ const MovieDescription = (props) => {
                       от собственного отдыха, настигает Пуаро на борту
                       роскошного круизного парохода, следующего вдоль по Нилу.
                     </p>
+                  </div>
+                  <div>
+                    <div>Отзывы о фильме</div>
+                    <div>
+                      {reviews.map((review) => {
+                        return <Review review={review} />;
+                      })}
+                    </div>
                   </div>
                 </div>
               </div>
