@@ -9,10 +9,12 @@ const MovieDescription = (props) => {
   const params = useParams();
   const dispatch = useDispatch();
   const films = useSelector((state) => state.films.films);
+  // console.log(2);
   useEffect(() => {
-    dispatch(getReview());
-  }, [dispatch]);
-  const reviews = useSelector((state) => state.revie.reviews);
+    dispatch(getReview(params.id));
+  }, [dispatch, params.id]);
+  const reviews = useSelector((state) => state.review.reviews);
+  console.log(reviews);
   return (
     <>
       {films.map((film) => {

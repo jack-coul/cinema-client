@@ -6,7 +6,7 @@ import seans from "./features/seans";
 import hall from "./features/hall";
 import news from "./features/news";
 import { composeWithDevTools } from "@redux-devtools/extension";
-
+import review from "./features/review";
 const { default: thunk } = require("redux-thunk");
 
 const combineRouter = combineReducers({
@@ -16,6 +16,7 @@ const combineRouter = combineReducers({
   seans,
   hall,
   news,
+  review,
 });
 
 const store = createStore(
