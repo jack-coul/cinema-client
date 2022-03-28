@@ -18,10 +18,10 @@ const Header = () => {
           <img src={logo} alt="" />
         </Link>
         <div className={styles.adressWrap}>
-          <div className={styles.cityName}>Ессентуки</div>
-          <div className={styles.streetName}>ул. Анджиевского, 1</div>
+          <div className={styles.cityName}>Грозный</div>
+          <div className={styles.streetName}>ул. Трошева, 7</div>
         </div>
-        <div className={styles.number}>+7(903)446-50-00</div>
+        <div className={styles.number}>+7(903)446-**-**</div>
       </div>
       <div className={styles.logoInst}>
         {!token ? (
