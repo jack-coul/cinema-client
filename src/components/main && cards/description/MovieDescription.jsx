@@ -108,7 +108,7 @@ const MovieDescription = (props) => {
                     </p>
                   </div>
                   <div>
-                    <div>Отзывы о фильме</div>
+                    <div className={styles.reviewTitle}>Отзывы о фильме</div>
                     <div>
                       {reviews.map((review) => {
                         return <Review review={review} />;

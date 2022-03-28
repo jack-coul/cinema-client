@@ -1,12 +1,11 @@
 import React from "react";
+import styles from "./Description.module.css";
 
 const Review = ({ review }) => {
   return (
-    <div>
-      <div>
-        <div>{review.user.name}</div>
-        <div>{review.text}</div>
-      </div>
+    <div className={styles.reviewWrapper}>
+      <div className={styles.userNameRewiew}>{review.user.name}: </div>
+      <div className={styles.rewiew}>{review.text}</div>
     </div>
   );
 };

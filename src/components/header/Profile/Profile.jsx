@@ -37,6 +37,7 @@ const Profile = () => {
   const { tickets, loadingTickets } = useSelector((state) => state.busy);
   const { login, userName, loadUser } = useSelector((state) => state.user);
   const AllListFilms = tickets.map((ticket) => ticket.seans.film.name);
+  
 
   const unique = (filmsList) => {
     let result = [];
@@ -198,7 +199,7 @@ const ChildModal = ({ film, tickets }) => {
             Начало сеанса: <span>{startSeans.seans.time}</span>
           </p>
           <Button className={cssc.closeWindow} onClick={handleClose}>
-            Закрыть
+            Close
           </Button>
         </Box>
       </Modal>
