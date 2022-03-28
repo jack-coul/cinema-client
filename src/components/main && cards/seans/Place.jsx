@@ -57,7 +57,7 @@ const Place = ({ place, seans, state, setCount, count, block, setBlock }) => {
         <div
           className={oneSeans.place && onePlace ? style.active : style.number}
         >
-          {oneSeans.place && onePlace ? "x" : place}{" "}
+          {oneSeans.place && onePlace ? "x" : place}
         </div>
       </div>
     </>
