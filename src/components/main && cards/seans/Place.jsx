@@ -62,7 +62,7 @@ const resss = places.includes(place)
         <div
           className={oneSeans.place && onePlace ? style.active : style.number}
         >
-          {oneSeans.place && onePlace ? "x" : place}{" "}
+          {oneSeans.place && onePlace ? "x" : place}
         </div>
       </div>
     </>

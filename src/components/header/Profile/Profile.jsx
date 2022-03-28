@@ -141,15 +141,13 @@ const ChildModal = ({ film, tickets }) => {
   const handleClose = () => {
     setOpen(false);
   };
-  const places = tickets
-    .map((ticket) => {
-      if (ticket.seans.film.name === film) {
-        return ticket.place;
-      }
-    })
-    .sort((a, b) => a - b);
-
+  const places = tickets.map((ticket) => {
+    if (ticket.seans.film.name === film) {
+      return ticket.place;
+    }
+  });
   const dispatch = useDispatch();
+
   const handleBusy = (busyPlace) => {
     tickets.forEach((bus) => {
       if (bus.seans.film.name === film)
@@ -188,6 +186,12 @@ const ChildModal = ({ film, tickets }) => {
               {places.map((place) => {
                 return <span onClick={() => handleBusy(place)}>{place}</span>;
               })}
+              <Tickets
+                places={places}
+                tickets={tickets}
+                film={film}
+                handleBusy={handleBusy}
+              />
             </span>
           </p>
           <p>
@@ -199,6 +203,38 @@ const ChildModal = ({ film, tickets }) => {
         </Box>
       </Modal>
     </React.Fragment>
+  );
+};
+
+const Tickets = ({ places, handleBusy }) => {
+  const dispatch = useDispatch();
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  return (
+    <div>
+      <Button className={cssc.closeWindow} onClick={handleOpen}>
+        Сдать билет
+      </Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <p id="modal-modal-title" variant="h6" component="h2">
+            Нажмите на билет который хотите вернуть
+          </p>
+          <p id="modal-modal-description" sx={{ mt: 2 }}>
+            {places.map((place) => {
+              return <span onClick={() => handleBusy(place)}>{place}</span>;
+            })}
+          </p>
+        </Box>
+      </Modal>
+    </div>
   );
 };
 
