@@ -60,14 +60,22 @@ export const getReview = (id) => {
   };
 };
 
-export const addReview = (text) => {
+export const addReview = (text, film) => {
   return async (dispatch, getState) => {
     const state = getState();
     const token = state.user.token;
     dispatch({ type: "add/review/pending" });
     try {
-      const res = await fetch("http://localhost:4000/film/review");
+      const res = await fetch("http://localhost:4000/film/review", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ text, film }),
+      });
       const review = await res.json();
+      console.log(review);
       dispatch({ type: "add/review/fulfilled", payload: review });
     } catch (error) {
       dispatch({ type: "add/review/rejected", error });

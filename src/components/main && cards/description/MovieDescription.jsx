@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getReview } from "../../../redux/features/review";
+import { addReview, getReview } from "../../../redux/features/review";
 import styles from "./Description.module.css";
 import Review from "./Review";
 
@@ -9,12 +9,17 @@ const MovieDescription = (props) => {
   const params = useParams();
   const dispatch = useDispatch();
   const films = useSelector((state) => state.films.films);
-  // console.log(2);
+
   useEffect(() => {
     dispatch(getReview(params.id));
   }, [dispatch, params.id]);
   const reviews = useSelector((state) => state.review.reviews);
-  console.log(reviews);
+  const handleAddComment = (e) => {
+    e.preventDefault();
+    dispatch(addReview(text, params.id));
+    setText("");
+  };
+  const [text, setText] = useState();
   return (
     <>
       {films.map((film) => {
@@ -108,6 +113,14 @@ const MovieDescription = (props) => {
                       {reviews.map((review) => {
                         return <Review review={review} />;
                       })}
+                      <form action="">
+                        <input
+                          type="text"
+                          value={text}
+                          onChange={(e) => setText(e.target.value)}
+                        />
+                        <input type="submit" onClick={handleAddComment} />
+                      </form>
                     </div>
                   </div>
                 </div>
