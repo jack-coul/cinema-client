@@ -32,11 +32,13 @@ const seans = (state = initialState, action) => {
         error: null,
       };
     case "get/seans/fulfilled":
-      return {
-        ...state,
-        loadingSeans: false,
-        seans: [...state.seans, ...action.payload],
-      };
+      if (action.payload) {
+        return {
+          ...state,
+          loadingSeans: false,
+          seans: [...state.seans, ...action.payload],
+        };
+      }
     case "seans/patch/fullfilled":
       return {
         ...state,
