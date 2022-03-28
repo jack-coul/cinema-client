@@ -14,7 +14,6 @@ const SingUp = () => {
   const [validPassword, setValidPassword] = useState("");
   const searchEmail = useSelector((state) => state.user.error);
   const message = useSelector((state) => state.user.message);
-  console.log(message);
   const handleValidEmail = (e) => {
     setLogin(e.target.value);
     const emailValid =

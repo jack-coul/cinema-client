@@ -37,7 +37,6 @@ const Profile = () => {
   const { tickets, loadingTickets } = useSelector((state) => state.busy);
   const { login, userName, loadUser } = useSelector((state) => state.user);
   const AllListFilms = tickets.map((ticket) => ticket.seans.film.name);
-  
 
   const unique = (filmsList) => {
     let result = [];
@@ -142,11 +141,13 @@ const ChildModal = ({ film, tickets }) => {
   const handleClose = () => {
     setOpen(false);
   };
-  const places = tickets.map((ticket) => {
-    if (ticket.seans.film.name === film) {
-      return ticket.place;
-    }
-  });
+  const places = tickets
+    .map((ticket) => {
+      if (ticket.seans.film.name === film) {
+        return ticket.place;
+      }
+    })
+    .sort((a, b) => a - b);
   const dispatch = useDispatch();
 
   const handleBusy = (busyPlace) => {
@@ -178,10 +179,11 @@ const ChildModal = ({ film, tickets }) => {
             <span>Фильм: </span>
             {film}
           </h2>
-          <p  id="child-modal-description">
-            <span>Количество билетов: </span> <span className={cssc.countTicket}>{tickets.length}</span>
+          <p id="child-modal-description">
+            <span>Количество билетов: </span>{" "}
+            <span className={cssc.countTicket}>{tickets.length}</span>
           </p>
-          <p >
+          <p>
             Места:{" "}
             <span className={cssc.countTicket}>
               {places.map((place) => {
@@ -208,8 +210,6 @@ const ChildModal = ({ film, tickets }) => {
 };
 
 const Tickets = ({ places, handleBusy }) => {
-  const dispatch = useDispatch();
-
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -225,12 +225,21 @@ const Tickets = ({ places, handleBusy }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <p className={cssc.ticketReturn} id="modal-modal-title" variant="h6" component="h2">
+          <p
+            className={cssc.ticketReturn}
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
+          >
             Нажмите на билет который хотите вернуть
           </p>
           <p id="modal-modal-description" sx={{ mt: 2 }}>
             {places.map((place) => {
-              return <span  className={cssc.films} onClick={() => handleBusy(place)}>{place}</span>;
+              return (
+                <span className={cssc.films} onClick={() => handleBusy(place)}>
+                  {place}
+                </span>
+              );
             })}
           </p>
         </Box>

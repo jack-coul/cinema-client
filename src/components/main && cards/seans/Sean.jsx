@@ -102,8 +102,14 @@ const Sean = ({ time, hall, name, genre, seanID, sean }) => {
           <div className={style.wrapButtonAndCards}>
             <div className={style.reservePlaces}>
               {places.map((place) => {
-                return <ReservedPlace setBlock={setBlock} place={place} count={count}
-                setCount={setCount} />;
+                return (
+                  <ReservedPlace
+                    setBlock={setBlock}
+                    place={place}
+                    count={count}
+                    setCount={setCount}
+                  />
+                );
               })}
             </div>
             <Link

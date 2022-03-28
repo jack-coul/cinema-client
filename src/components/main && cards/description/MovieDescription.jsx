@@ -115,13 +115,18 @@ const MovieDescription = (props) => {
                       })}
                       <form action="">
                         <input
-                        placeholder="Введите комментарий"
-                        className={styles.inpReview}
+                          placeholder="Введите комментарий"
+                          className={styles.inpReview}
                           type="text"
                           value={text}
                           onChange={(e) => setText(e.target.value)}
                         />
-                        <input className={styles.addReview} disabled={!text} type="submit" onClick={handleAddComment} />
+                        <input
+                          className={styles.addReview}
+                          disabled={!text}
+                          type="submit"
+                          onClick={handleAddComment}
+                        />
                       </form>
                     </div>
                   </div>

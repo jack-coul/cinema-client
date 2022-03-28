@@ -62,7 +62,6 @@ a {
   border-bottom: 1px solid rgb(199, 199, 199);
   border-top: 1px solid rgb(199, 199, 199);
   background-color: rgb(226, 226, 226);
-
 }
 .navigateFromDatesWrap {
   display: flex;
@@ -87,4 +86,3 @@ a {
 .singUp {
   margin-right: 10px;
 }
-

@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 import styles from "./Cards.module.css";
 
 const CardTomorrow = () => {
-    return (
-        <div className={styles.card}>
+  return (
+    <div className={styles.card}>
       <div className={styles.backroundImgWrap}>
         <div className={styles.cardImg}>
           <div className={styles.year}>16+</div>
@@ -18,7 +18,7 @@ const CardTomorrow = () => {
       </div>
       <div className={styles.seanses}>Сеансы на Завтра</div>
     </div>
-    );
+  );
 };
 
 export default CardTomorrow;

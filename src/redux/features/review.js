@@ -75,7 +75,6 @@ export const addReview = (text, film) => {
         body: JSON.stringify({ text, film }),
       });
       const review = await res.json();
-      console.log(review);
       dispatch({ type: "add/review/fulfilled", payload: review });
     } catch (error) {
       dispatch({ type: "add/review/rejected", error });

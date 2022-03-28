@@ -24,7 +24,7 @@
   display: block;
   transition: 0.4s;
 }
-.cardImg:hover{
+.cardImg:hover {
   transform: scale(1.1);
 }
 

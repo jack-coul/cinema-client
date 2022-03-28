@@ -11,7 +11,8 @@ const MainNews = () => {
           <h1>Новости</h1>
         </div>
         <div className={styles.showAllNews}>
-          <Link to='/newspage'>показать все</Link> <img src={arrowRight} alt="" />
+          <Link to="/newspage">показать все</Link>{" "}
+          <img src={arrowRight} alt="" />
         </div>
       </div>
       <div className={styles.newsCardWrap}>
@@ -44,7 +45,9 @@ const MainNews = () => {
           <div className={styles.newsDataInfo}>19 марта 2020 в 9:03</div>
           <div className={styles.newsTitleInfo}>Ограничения до 10 февраля</div>
           <div className={styles.newsInfo}>
-          Уважаемые друзья! Согласно Постановления Губернатора СК от 16.03.2020г. №101 «О введении на территории СК режима повышенной готовности»
+            Уважаемые друзья! Согласно Постановления Губернатора СК от
+            16.03.2020г. №101 «О введении на территории СК режима повышенной
+            готовности»
           </div>
           <div className={styles.showAllNewsFromCard}>
             <a href="http://localhost:3000/news">Читать далее...</a>
@@ -61,9 +64,7 @@ const MainNews = () => {
         <div className={styles.newsInfoWrap}>
           <div className={styles.newsDataInfo}>6 марта 2020 в 14:56</div>
           <div className={styles.newsTitleInfo}>Проблемы связи!!!</div>
-          <div className={styles.newsInfo}>
-          Проблемы связи!!!
-          </div>
+          <div className={styles.newsInfo}>Проблемы связи!!!</div>
           <div className={styles.showAllNewsFromCard}>
             <a href="http://localhost:3000/news">Читать далее...</a>
           </div>

@@ -2,13 +2,12 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import style from "./Cinema.module.css";
 
-const ReservedPlace = ({ place, setBlock , setCount, count}) => {
+const ReservedPlace = ({ place, setBlock, setCount, count }) => {
   const dispatch = useDispatch();
   const hundleDeleteReserve = () => {
     dispatch({ type: "deletePlace", payload: place });
     setBlock(false);
     setCount(count + 1);
-
   };
   return (
     <div className={style.reservs}>
