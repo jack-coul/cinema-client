@@ -34,12 +34,13 @@ const Place = ({ place, seans, state, setCount, count, block, setBlock }) => {
         setCount(count + 1);
         dispatch({ type: "deletePlace", payload: place });
         setReserve(false);
+        
       }
     } else {
       setBlock(true);
     }
   };
-
+const resss = places.includes(place)
   return (
     <>
       <div
@@ -51,6 +52,10 @@ const Place = ({ place, seans, state, setCount, count, block, setBlock }) => {
             : !reserve
             ? style.places
             : style.select
+            &&
+            resss?
+            style.select
+            :style.places
         }
         disabled={onePlace}
       >
