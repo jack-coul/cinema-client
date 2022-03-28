@@ -177,12 +177,12 @@ const ChildModal = ({ film, tickets }) => {
             <span>Фильм: </span>
             {film}
           </h2>
-          <p id="child-modal-description">
-            <span>Количество билетов: </span> {tickets.length}
+          <p  id="child-modal-description">
+            <span>Количество билетов: </span> <span className={cssc.countTicket}>{tickets.length}</span>
           </p>
-          <p>
+          <p >
             Места:{" "}
-            <span>
+            <span className={cssc.countTicket}>
               {places.map((place) => {
                 return <span onClick={() => handleBusy(place)}>{place}</span>;
               })}
@@ -198,7 +198,7 @@ const ChildModal = ({ film, tickets }) => {
             Начало сеанса: <span>{startSeans.seans.time}</span>
           </p>
           <Button className={cssc.closeWindow} onClick={handleClose}>
-            Close Child Modal
+            Закрыть
           </Button>
         </Box>
       </Modal>
@@ -224,12 +224,12 @@ const Tickets = ({ places, handleBusy }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <p id="modal-modal-title" variant="h6" component="h2">
+          <p className={cssc.ticketReturn} id="modal-modal-title" variant="h6" component="h2">
             Нажмите на билет который хотите вернуть
           </p>
           <p id="modal-modal-description" sx={{ mt: 2 }}>
             {places.map((place) => {
-              return <span onClick={() => handleBusy(place)}>{place}</span>;
+              return <span  className={cssc.films} onClick={() => handleBusy(place)}>{place}</span>;
             })}
           </p>
         </Box>

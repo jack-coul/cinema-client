@@ -70,6 +70,7 @@
     color: gold;
     font-weight: 600;
     border: 1px solid gold;
+    margin-top: 5px;
 }
 .ticketsWrap {
     display: flex;
@@ -99,4 +100,17 @@
 }
 .filmsWrap .films div {
     color: gold;
+}
+.litleModal p {
+    padding: 0;
+    margin: 0;
+}
+.countTicket {
+    color: gold;
+}
+.ticketReturn {
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 25px;
 }
